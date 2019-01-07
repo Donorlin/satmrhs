@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{cook}
+{\sc Cook, S.~A.}
+\newblock {\em The Complexity of Theorem-Proving Procedures}.
+\newblock Proceedings of the Third Annual ACM Symposium on Theory of Computing,
+  1971.
+
+\bibitem{satdef}
+{\sc HURTH, M., R.~M.}
+\newblock {\em Logic in computer science}, 2~ed.
+\newblock Cambridge University Press, New York, 2004.
+\newblock ISBN 978-0-511-26401-6.
+
+\bibitem{fikobp}
+{\sc Kabashi, F.}
+\newblock {\em Aplikácia MRHS rovníc na riešenie SAT problému}.
+\newblock 2018.
+
+\end{thebibliography}

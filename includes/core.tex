@@ -1,0 +1,94 @@
+% !TeX encoding = windows-1250
+\newtheorem{defn}{Definícia}[section]
+
+\section{Ponuka}
+\subsection{Tím}
+Náš tím sa skladá z 3 èlenov. Ide o troch programátorov, ktorí študujú na FEI STU odbor aplikovaná informatika. Všetci traja sme v minulosti spolupracovali na našich bakalárskych prácach s prof. Zajacom (zadávate¾ tímového projektu) na témach úzko súvisiacich s témou tímového projektu. Jednotlivı èlenovia tímu:
+
+\textbf{Alena Bednáriková} - programátorka. Témou jej bakalárskej práce bolo riešenie MQ problému. Jej hlavnım prínosom pre tím je jej logické uvaovanie.
+
+\textbf{Daniel Jahodka} - programátor. Obsahom jeho bakalárskej práce boli sústavy MRHS rovníc a ich úprava pomocou heuristickıch algoritmov. Jeho hlavnım prínosom pre tím je riešenie problémov a návrh ich riešeni, prevane tıch programátorskıch.
+
+\textbf{Fikrim Kabashi} - programátor so zameraním na C, C++ jazyky. Obsahom jeho bakalárskej práce bol práve SAT problém a MRHS rovnice. Implementoval algoritmus na heuristickú optimalizáciu poradia jednotlivıch klauzúl v SAT formule. Práve tento algoritmus je jeden z tıch, ktoré budeme implementova do MRHS solvera. 
+
+\subsection{Motivácia}
+Hlavnou motiváciou, preèo chceme rieši práve tento tímovı projekt je fakt, e obsah tohoto tímového projektu priamo nadväzuje na naše bakalárske práce a máme s danou témou a problematikou u nejaké skúsenosti. V našom prípade nebudeme musie sa venova úplnım základom oh¾adom tém MRHS sústav a SAT problému, ale budeme môc sa hneï venova novej problematike a prípadej implementácií novıch algoritmov, èi u na riešenie MRHS sústav/SAT problému alebo ich úprav. 
+
+\subsection{Hrubı návrh a plán projektu}
+Nako¾ko ide o vedecky zameranı projekt, tak hlavnım plánom projektu je implementova resp. doimplementova nové algoritmy do MRHS solveru a následne vyhodnoti dobu riešenie MRHS sústavy. Medzi plánované veci, ktoré sa budú implementova do solvera sú:
+
+\begin{itemize}
+	\item transformácia SAT do MRHS
+	\item heuristická optimalizácia poradia SAT klauzúl
+	\item SAT challenge formality
+	\item Dual solver
+\end{itemize}
+
+\subsection{Predpokladané zdroje}
+Najhlavnejším zdrojom, ktorı budeme potrebova pre urıchlenie vıpoètov je prístup k školskému klastru \url{https://www.hpc.stuba.sk}. Vïaka klastru, by sme dokázali paralelne spúša vıpoèty a úrıchli tak získanie vısledkov a ich následné vyhodnotie.
+
+\subsection{Rozvrh}
+Všetci traja èlenovia máme rovnakı rozvrh. So zadávate¾om tímového projektu máme konzultaènú hodinu dohodnutú na kadu stredu semestra o 14 hodine.
+
+\section{Ciele riešenia}
+Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešenie sústav s viacerımi pravımi stranami. Ide o program napísanı v jazyku C. Algoritmus riešenia sústavy je popísanı v teoretickej kapitole projektu. Cie¾om projektu je rozšíri tento program o novı algoritmus riešenia sústav tzv. Dual solver, o heuristickú optimalizáciu poradia klauzúl SAT formuli, o prevod SAT formuli do MRHS sústavy a o funkcionalitu v podobe špecifickıch vıstupov a exit kódov programu, ktoré vyaduje SAT challenge pre zúèastnenie. 
+
+Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl
+
+\section{Teoretickı èas}
+V teoretickej èasti tejto práce si zadefinujeme jednotlivé pojmy, s ktorımi budeme ïalej pracova. Postupne si zadefinujeme SAT problém, sústavy rovníc s viacerımi pravımi stranami (MRHS) ako aj jednotlivé algoritmy, ktoré budeme vyuíva na riešenie MRHS sústav alebo na heuristickú úpravu poradia klauzúl SAT formule. 
+
+\subsection{SAT}
+\noindent Na lepšie vysvetlenie bude potrebné zavies si základné pojmy z vırokovej logiky. Definovanie pojmov je spracované pod¾a \cite{satdef} \cite{fikobp}.\newline
+\newline
+\noindent Formálna špecifikácia vırokovej logiky pozostáva z neprázdnej a neohranièenej mnoiny \(X\) zloenej z tzv. atomickıch vırokov a z mnoiny symbolov logickıch spojok \(\neg\) (negácia),  \(\wedge\) (konjunkcia), \(\vee\) (disjunkcia), \(\rightarrow\) (implikácia), \(\leftrightarrow\) (ekvivalencia) a pomocné symboly (zátvorky), ktoré definujú jazyk vırokovej logiky. Atomické vıroky budeme oznaèova vırokovımi premennımi  \((x{_1},x{_2},x{_3},...)\) . Atomické vıroky nadobúdajú pravdivostné hodnoty \(x{_i} \in \{ FALSE,TRUE \}\). Jazykom vırokovej logiky môeme definova tzv. vırokové formuly.
+
+\begin{defn}	
+	Formula vırokovej logiky je definovaná pomocou nasledujúcich syntaktickıch pravidiel:
+	\begin{enumerate}
+		\item Kadá vıroková premenná \(x{_i} \in X\) je vıroková formula.
+		\item Ak \(A\) a \(B\) sú formule, tak \(\neg A, (A \wedge B), (A \vee B), (A \rightarrow B), (A \leftrightarrow B)\) sú tie formule.
+		\item Kadá formula vzniká koneènım pouitím pravidiel (1.) a (2.).
+	\end{enumerate}
+\end{defn}
+Formuly sú splnite¾né , ak dosadenie nejakıch hodôt za vırokové premenné a vyhodnotením logickıch spojok štandartnım spôsobom dostaneme pravdivostnú hodnotu \(TRUE\). Napr.následovnú formulu vyhodnotíme ako splnite¾nú, ak \(B=TRUE\).
+\begin{equation}
+(A\vee B)\wedge(\neg A \vee B)
+\end{equation}
+Pre naše potreby, si zadefinujeme ešte jeden špecialny tvar formúl vırokovej logiky tzv. konjuktívnu normálnu formu v skratke (CNF).
+\begin{defn}
+	\cite{satdef}
+	Vıroková formula F je v konjuktívnej normálnej forme, ak má tvar konjunkcie (AND) koneèného poètu klauzúl \(f{_i}\), kde kadá klauzula je dizjunkciou (OR) literálov (atomické vıroky a ich negácie). Napríklad:
+	\begin{equation}
+	F=(x{_1} \vee \neg x{_2}) \wedge (x{_2} \vee x{_3}) \wedge (\neg x{_1} \vee x{_3})
+	\end{equation}
+	F je CNF formula s troma premennımi a troma klauzulami. Formulu \(F\) vyhodnotíme ako splnite¾nú, ak \(x{_1} = x{_2} = x{_3} = TRUE\).
+\end{defn}
+
+Klauzula, ktorá neobsahuje iadny literál, sa nazıva prázdna a vyhodnocuje sa ako \(FALSE.\)
+\newline
+
+Nastavenie logickıch premennıch na nejaké hodnoty oznaèíme pojmom interpretácia(formuly).
+\newline
+
+SAT je problém rozhodnutia, èi existuje interpretácia, ktorá spåòa danı booleovskı vıraz. Inımi slovami, pıtame sa, èi premenné daného booleovského vırazu, môu by nahradené hodnotami \(TRUE\) alebo \(FALSE\) takım spôsobom, e vıraz sa vyhodnotí ako \(TRUE.\) Ak je to tak, vıraz sa nazıva splnite¾nı. Na druhej strane, ak takéto priradenie neexistuje, vıraz je vyhodnotenı ako \(FALSE\) pre všetky moné priradenia premennıch, a vıraz je nesplnite¾nı. 
+
+SAT problém je prvı známy NP-úplnı problém (dokázané Stephenom Cookom\cite{cook}). To znamená, e všetky problémy v triede zloitosti NP sú nanajvıš tak aké, ako SAT. Doposia¾, nie je známy algoritmus, ktorı efektívne rieši kadı SAT problém a všeobecne sa verí, e takıto algoritmus neexistuje.
+
+\subsection{MRHS rovnice a sústavy}
+V tejto podkapitole si zadefinujeme pojem rovnice s viacerımi pravımi stranami ako aj sústavu tıchto rovníc pod¾a èlánku \cite{mrhslingebra}. Všetky vıpoèty sú uskutoènené nad po¾om s dvoma prvkami (0 a 1) a oznaèením \(\mathbb{F} \). Všetky vektory \(\mathbb{F} \) sú riadkové vektory a sú oznaèené malım písmenom abecedy. Mnoiny sú znaèené ve¾kımi písmenami abecedy a matice tuènımi ve¾kımi písmenami. 
+
+\begin{defn}
+	\cite{mrhslingebra} Rovnicou s viacerımi pravımi stranami (MRHS) nad po¾om \(\mathbb{F} \) nazıvame vıraz tvaru
+	\[x\mathbf{M} \in S,\]
+	kde \(\mathbf{M}\) je matica s rozmermi \(n \times l\), kde n je poèet riadkov matice \(\mathbf{M}\) a l je poèet ståpcov, a \(S \subset    \mathbb{F}^l \) je mnoina \(l\)-bitovıch vektorov. Hovoríme, e \(x \in \mathbb{F}^n\) je riešením MRHS rovnice práve vtedy, keï \(x\mathbf{M} \in S\). 
+\end{defn}
+
+Sústavou rovníc s viacerımi pravımi stranami \(\mathcal{M}\) je mnoina \(m\) MRHS rovníc s rovnakou dimenziou \(n\) (rovnakı poèet riadkov). Formálne sa môe zapísa 
+\[\mathcal{M} = \{x\mathbf{M}_i \in S_i|1\leq i\leq m \},\]
+kde kadé \(\mathbf{M}_i\) je (\(n \times l_i\)) matica a \(S_i \subset \mathbb{F}^{l_i} \). Vektor \(x \in \mathbb{F}^n\) je riešením sústavy MRHS rovníc \(\mathcal{M}\), ak je tento vektor riešením pre všetky MRHS rovnice tejto sústavy.  
+
+\textbf{Zdruená matica sústavy:} Sústave MRHS rovníc \(\mathcal{M} = \{x\mathbf{M}_i \in S_i\}\) môeme spoji všetky matice \(\mathbf{M_i}\), nako¾ko poèet ich riadkov je rovnakı. Vıslednú maticu oznaèujeme \(\mathbf{M}\) a nazıvame ju zdruenou maticou sústavy:
+\[\mathbf{M} = [\mathbf{M_1}|\mathbf{M_2}|\cdots|\mathbf{M_m}]\]
+Takisto budeme oznaèova mnoinu vektorov pravıch strán \(S_1 \times S_2 \times \cdots \times S_m\) ako \(S\). Nájdenie riešenia znamená nájdenie takého \(x \in \mathbb{F}^n\), pre ktoré platí \(x\mathbf{M} \in S\).\\
+\textit{Pozn.:} Ståpce, ktoré patria \(\mathbf{M_i}\) nazıvame blok. V texte sa èasto budeme odvoláva na \(i\)-ty blok matice \(\mathbf{M}\).

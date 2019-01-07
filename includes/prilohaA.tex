@@ -1,0 +1,146 @@
+% !TeX encoding = windows-1250
+
+\subsection{Spustenie}
+Pre spustenie programu MRHS-modifier otvorte príkazovı riadok a napíšte:
+\begin{verbatim}
+	java -jar MRHS-modifier.jar
+\end{verbatim}
+
+Program podporuje pri spúšaní prepínaè
+\begin{verbatim}
+-f nazov_suboru,
+\end{verbatim}
+ktorı priamo spustí program s naèitanou sústavou urèenou vstupnım súborom nazov\_suboru.
+
+\subsection{Príkazy}
+\begin{itemize}
+	\item \verb|load nazov_suboru|
+	\begin{itemize}
+		\item Naèíta sústavu zo súboru nazov\_suboru. V prípade, ak nazov\_suboru nie je zadanı, tak program zobrazí okno s monosou manuálnej vo¾by súboru.
+ 	\end{itemize} 
+ 
+ 	\item \verb|save nazov_suboru|
+ 	\begin{itemize}
+ 		\item Zapíše sústavu do súboru nazov\_suboru. V prípade, ak nazov\_suboru nie je zadanı, tak program zobrazí okno s monosou manuálnej vo¾by súboru.
+ 	\end{itemize} 
+ 
+ 	\item \verb|random n m l k r d| 	
+ 	\begin{itemize}
+ 		\item Vygeneruje náhodnú sústavu o zadanıch rozmeroch. \\n - poèet premennıch, \\ m - poèet rovníc, \\l - poèet ståpcov rovnice, \\k - poèet pravıch strán rovnice, \\r - ak je 1, tak sa vygenerujú rovnice s poètom såpcov z intervalu <1,l> resp. <1,k> v prípade pravıch strán. Ak r = 0, všetky rovnice majú rovnakı rozmer. \\d - hustota jednotiek v zdruenej matici sústavy. 
+ 	\end{itemize}
+ 
+	\item \verb|solve solver sustava|
+	\begin{itemize}
+		\item Spustí program MRHS solver, ktorého executable súbor má názov solver so sústavou zo súboru sustava. 
+	\end{itemize}
+
+	\item \verb|info|
+	\begin{itemize}
+		\item Vypíše na vıstup rozmery aktuálne naèítanej sústavy.
+	\end{itemize}
+	
+	\item \verb|show|
+	\begin{itemize}
+		\item Vypíše na vıstup aktuálne naèítanú sústavu.
+	\end{itemize}
+
+	\item \verb|echo sprava na vypisanie|
+	\begin{itemize}
+		\item Príkaz vypíše všetky argumenty, ktoré dostane ako vstup. Vyuité pri automatizácii a logovaní experimentov.
+	\end{itemize}
+	
+	\item \verb|swaprows i j|
+	\begin{itemize}
+		\item Vymení riadok i s riadkom j. 
+	\end{itemize}
+	
+	\item \verb|swapcols eq i j|
+	\begin{itemize}
+		\item V rovnici eq vymení ståpec i so ståpcom j. 
+	\end{itemize}
+
+	\item \verb|addrow i j|
+	\begin{itemize}
+		\item Pripoèíta riadok j do riadku i. i = i XOR j.
+	\end{itemize}
+
+	\item \verb|addcol eq i j|
+	\begin{itemize}
+		\item V rovnici eq pripoèíta ståpec j k ståpcu j. i = i XOR j.
+	\end{itemize}
+	
+	\item \verb|deleterow i|
+	\begin{itemize}
+		\item Vymae riadok i zo sústavy.
+	\end{itemize}
+
+	\item \verb|deletecol eq i|
+	\begin{itemize}
+		\item Vymae ståpec i v rovnici eq.
+	\end{itemize}
+	
+	\item \verb|swapblocks i j|
+	\begin{itemize}
+		\item Vymení rovnicu i s rovnicou j.
+	\end{itemize}
+
+	\item \verb|deleteblock eq|
+	\begin{itemize}
+		\item Vymae rovnicu eq zo systému.
+	\end{itemize}
+
+	\newpage
+	\item \verb|glue i j keepOld|
+	\begin{itemize}
+		\item Aplikuje Glue-ing algoritmus na blok i a j. Ak keepOld je rovné 1, potom pridá novú zlepenú rovnicu na koniec sústavy. Ak keepOld je rovné 0, odstráni pôvodné rovnice a na pozíciu rovnice i pridá novú zlepenú rovnicu.
+	\end{itemize}
+
+	\item \verb|permuteblocks permutationfile|
+	\begin{itemize}
+		\item Aplikuje permutáciu zo súboru permutationfile na poradie rovníc sústave. V prípade, ak nie je zadanı permutationfile pouije sa náhodne generovaná permutácia.
+	\end{itemize}
+	
+	\item normalizeE eq
+	\begin{itemize}
+		\item Upraví rovnicu eq na redukovanı stupòovitı tvar cez ståpcové operácie.
+	\end{itemize}
+
+	\item \verb|normalizeS|
+	\begin{itemize}
+		\item Pouije príkaz normalizeE na celú sústavu.
+	\end{itemize}
+
+	\item \verb|build|
+	\begin{itemize}
+		\item Aplikuje heuristickı algoritmus na optimalizáciu sústavy.
+	\end{itemize}
+
+	\item \verb|guess premenna hodnota|
+	\begin{itemize}
+		\item Dosadí za premennú premenna hodnotu hodnota. Hodnota môe by len 0 alebo 1. V prípade dosadenia za premennú sa vynuluje príslušnı riadok. Ak dosadená hodnota bola 1, tak sa príslušnı riadok pripoèíta k pravım stranám. 
+	\end{itemize}
+	
+	\item \verb|expand|
+	\begin{itemize}
+		\item Aplikuje algoritmus expanzie sústavy. 
+	\end{itemize}
+	
+	
+
+\end{itemize}
+
+
+
+
+\subsection{Automatizácia}
+Program podporuje taktie automatizáciu príkazov, ktoré má vykona. Staèí, ak presmerujete textovı súbor s príkazmi v samostatnıch riadkoch.
+
+\textbf{Príklad:}:
+\begin{verbatim}
+cmd.txt>
+	load sustava.txt
+	build
+	save builsustava.txt
+	exit
+\end{verbatim}
+Presmerovaním súboru cmd.txt do vstupu programu sa naèíta sústava zo suboru sustava.txt, aplikuje sa heuristickı algortimus na optimalizáciu sústavy, uloí sa nová sústava a vypne sa program.
