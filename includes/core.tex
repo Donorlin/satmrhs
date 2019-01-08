@@ -35,8 +35,8 @@ Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešen
 
 Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl
 
-\section{Teoretickı èas}
-V teoretickej èasti tejto práce si zadefinujeme jednotlivé pojmy, s ktorımi budeme ïalej pracova. Postupne si zadefinujeme SAT problém, sústavy rovníc s viacerımi pravımi stranami (MRHS) ako aj jednotlivé algoritmy, ktoré budeme vyuíva na riešenie MRHS sústav alebo na heuristickú úpravu poradia klauzúl SAT formule. 
+\section{Teoretické základy}
+V teoretickej èasti tejto práce si zadefinujeme jednotlivé pojmy, s ktorımi budeme ïalej pracova. Postupne si zadefinujeme SAT problém a sústavy rovníc s viacerımi pravımi stranami (MRHS).
 
 \subsection{SAT}
 \noindent Na lepšie vysvetlenie bude potrebné zavies si základné pojmy z vırokovej logiky. Definovanie pojmov je spracované pod¾a \cite{satdef} \cite{fikobp}.\newline
@@ -92,3 +92,181 @@ kde kadé \(\mathbf{M}_i\) je (\(n \times l_i\)) matica a \(S_i \subset \mathbb{
 \[\mathbf{M} = [\mathbf{M_1}|\mathbf{M_2}|\cdots|\mathbf{M_m}]\]
 Takisto budeme oznaèova mnoinu vektorov pravıch strán \(S_1 \times S_2 \times \cdots \times S_m\) ako \(S\). Nájdenie riešenia znamená nájdenie takého \(x \in \mathbb{F}^n\), pre ktoré platí \(x\mathbf{M} \in S\).\\
 \textit{Pozn.:} Ståpce, ktoré patria \(\mathbf{M_i}\) nazıvame blok. V texte sa èasto budeme odvoláva na \(i\)-ty blok matice \(\mathbf{M}\).
+
+
+\section{Algoritmy}
+V tejto kapitole si predstavíme všetky algoritmy, ktoré budeme vyuíva. Algoritmus na riešenie MRHS sústav, ktorı vyuíva MRHS solver je ukázanı v kapitole \ref{subsec: algMRHS}. Ostatné algoritmy sú algoritmy, ktoré sme implementovali do MRHS solvera a to prevod SAT problému na MRHS sústavu, heuristická optimalizácia poradia klauzúl v SAT formule, Dual solver algoritmus na riešenie sústavy a transformácia MRHS sústavy na formát, ktorı vyaduje Dual solver algoritmus na vstupe.
+
+\subsection{Algoritmus na riešenie MRHS sústavy} \label{subsec: algMRHS}
+V tejto podkapitole si ukáeme algoritmus riešenia MRHS sústav, ktorı je implementovanı v MRHS solveri. Zápis tohoto algoritmu je prevzatı z \cite{jahobp} a \cite{mrhslingebra}
+
+
+\begin{algorithm}[H]
+	\caption{Uprav a vypoèítaj sústavu MRHS rovníc}
+	\label{alg: solver} 
+	\begin{algorithmic} 
+		\REQUIRE MRHS sústava \(x\mathbf{M} \in S = S_1 \times S_2 \times \cdots \times S_m\)
+		\ENSURE Mnoina \(X \subset \mathbb{F}^n\), pre ktorú platí  \(x\mathbf{M'} \in S\), \(\forall x \in X\), kde $\mathbf{M'}$ je upravená matica\\
+		\COMMENT{ÚPRAVA ZDRUENEJ MATICE}
+		\STATE Uprav maticu \(\mathbf{M}\) na redukovanı stupòovitı tvar cez riadkové úpravy.
+		\STATE Vo všetkıch blokoch, ktoré obsahujú pivoty, vynuluj riadky, v ktorıch sa pivoty nachádzajú, cez såpcové úpravy.		
+		\newline
+		\COMMENT{REKURZÍVNE H¼ADANIE RIEŠENIA}
+		\STATE \(X = \emptyset\), \(k = 1\), $x$ rozšírené o bity z $S_1[1]$
+		\REQUIRE k, matica \(\mathbf{M}\), èiastoèné riešenie $x$, mnoina \(X\)
+		\IF[m je poèet blokov]{k <= m}	 
+		\FOR[n je poèet vektorov v mnoine  $S_k$]{j := 1, j<= n, j++}
+		\IF{$x\mathbf{M_k}$ == $S_k[j]$}
+		\IF{k == m}
+		\STATE $X$ := $X$  \(\cup \{x\}\)
+		\ENDIF
+		\STATE rozšír $x$ o bity z $S_k[j]$
+		\STATE $X$ := $X \cup rekurzia(k + 1, \mathbf{M}, x, X)$
+		\ENDIF					
+		\ENDFOR
+		\ENDIF	
+		\RETURN \(X\)
+	\end{algorithmic}
+\end{algorithm}
+
+Tento algoritmus vráti len riešenia upravenej sústavy, a preto je nutné na základe vzorca \[x\mathbf{A^{-1}}\mathbf{A}\mathbf{M}\mathbf{B} \in S_M\mathbf{B},\] mono spätne vyjadri riešenie pôvodnej sústavy. Ak pre upravenú sústavu platí vzah $\mathbf{M'}=\mathbf{A}\mathbf{M}$, potom pre riešenia upravenej sústavy platí vzah $y=x\mathbf{A^{-1}}$. Keï osamostatníme $x$ dostaneme vzorec $x=y\mathbf{A}$, ktorım spätne vyrátame riešenia pôvodnej sústavy \cite{jahobp}. 
+	
+\subsection{Prevod SAT problému na MRHS}
+ Kadá klauzula bude u nás predstavova jeden blok matice o ve¾kosti \(m \times n\), kde \(m\) je poèet literálov v klauzule a \(n\) je poèet všetkıch literálov. Poèet blokov hlavnej matice, je rovnı poètu klauzúl SAT problému. Prevod z formátu DIMACS na MRHS urobíme pomocou algoritmu v pseudokóde, ktorı je popísanı v algoritme \ref{alg: sat-to-mrhs-L}.
+
+Pravé strany dostaneme tak, e si vypíšeme všetky moné riešenia pre danú klauzulu, ktorıch je \(2^{n}\), kde \(n\) oznaèuje poèet literálov v klauzule, a odstránime práve jedno riešenie, pre ktoré by klauzula nadobudla hodnotu \(FALSE\). Z toho dostávame e poèet pravıch strán je  \(2^{n}-1\).
+
+\begin{algorithm}[H]
+	\caption{Vytvorenie pravıch strán}
+	\begin{algorithmic}
+		\renewcommand{\algorithmicensure}{\textbf{Vıstup:}}
+		\REQUIRE Matica \(\mathbf{S}\) \COMMENT{Matica \(\mathbf{S}\) z ALGORITMU \ref{alg: sat-to-mrhs-L}}
+		\ENSURE Pole matíc \(\mathbb{P}\)
+		\STATE Inicializuj \(\mathbb{P}\) a \(\mathbf{R}\)
+		\FOR[s je velkos $\mathbf{S}$]{i := 0, i < s, i++}
+		\STATE Vytvor pravdivostnú tabu¾ku pre N premennıch, kde N je ve¾kos \(\mathbf{S}[i]\) a ulo ju do \(\mathbf{R}\) \\
+		\COMMENT{Vytvorenie zakázaného riešenia}
+		\REQUIRE Pole \(K\) \COMMENT{\(K\) obsahuje \(i\)-ty riadok \(\mathbf{S}\)}
+		\ENSURE Pole zakázané riešenie \(Z\)
+		\STATE Inicializuj pole  \(Z\)
+		\FOR[$m$ je ve¾kos $K$]{j := 0, j <  m, j++}
+		\IF{\(K[j] > 0\)}
+		\STATE Vlo hodnotu 0 do \(Z\)
+		\ELSE
+		\STATE Vlo hodnotu 1 do \(Z\)
+		\ENDIF
+		\ENDFOR
+		\STATE Nájdi \(Z\) v \(\mathbf{R}\) a vyma ho. Vlo \(R\) do \(\mathbb{P}\)
+		\ENDFOR
+		\RETURN \(\mathbb{P}\)
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[H]
+	\caption{Vytvorenie hlavnej matice MRHS}
+	\label{alg: sat-to-mrhs-L}
+	\begin{algorithmic}
+		\renewcommand{\algorithmicensure}{\textbf{Vıstup:}}
+		\REQUIRE SAT problém vo formáte DIMACS 
+		\ENSURE Matica \(\mathbf{S}\)
+		\STATE Inicializuj premenné \(p\), \(k\),  \(count\), pole \(L\) a maticu  \(\mathbf{S}\)
+		\STATE Naèítaj prvı riadok do \(L\)
+		\WHILE{\(L[0]\) != \("p"\)}
+		\STATE Naèítaj ïalší riadok
+		\ENDWHILE
+		\STATE Vyparsuj èíselné hodnoty z \(L\) a ulo ich do premennej \(p\) a \(k\) (poèet premenıch a poèet klauzúl).
+		\WHILE{\(count\) == \(k\)}
+		\STATE Inicializuj pole \(T\)
+		\STATE Naèítaj riadok a ulo ho do \(T\)
+		\STATE Vlo \(T\) do \(\mathbf{S}\)
+		\STATE \(count++\) 
+		\ENDWHILE
+		\RETURN \(\mathbf{S}\)\\
+		\COMMENT{Vytvorenie hlavnej matice}
+		\REQUIRE Matica \(\mathbf{S}\), premenná \(p\)
+		\ENSURE Pole matíc \(\mathbb{B}\) \COMMENT{Kadá matica reprezentuje jeden blok}
+		\STATE Inicializuj pole matíc \(\mathbb{B}\)
+		\STATE Inicializuj maticu \(\mathbf{H}\) a pole \(L\)
+		\FOR[\(s\) je ve¾kos matice \(\mathbf{S}\) (poèet klauzúl)]{\(i := 0, i < s, i++\)}
+		\FOR[\(p\) je poèet premennıch]{\(j := 0, j < p , j++\)}
+		\FOR[\(r\) je ve¾kos \(\mathbf{S}{[i]}\) (poèet literálov v klauzule)]{\(k := 0, k < r, k++\)}
+		\IF{\(\mathbf{S}[i][k]\) == \( j+1\) || \(\mathbf{S}[i][k]\) == \(-(j+1)\) }
+		\STATE Vlo hodnotu 1 do \(L\)
+		\ELSE
+		\STATE Vlo hodnotu 0 do \(L\)
+		\ENDIF
+		\ENDFOR
+		\STATE Vlo \(L\) do \(\mathbf{H}\) a vyèisti \(L\)
+		\ENDFOR
+		\STATE Vlo \(\mathbf{H}\) do \(\mathbb{B}\) a vyèisti \(\mathbf{H}\)
+		\ENDFOR
+		\RETURN \(\mathbb{B}\)
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{Heuristická optimalizácia poradia klauzúl}
+V tejto kapitole si ukáeme heuristickı algoritmus na preusporiadanie klauzúl z práce \cite{fikobp}.
+
+
+Majme bipartitnı graf \(G = (U, V, E)\) viï obrázok \ref{fig:Bipartitnı graf}:
+\begin{figure}[H]
+	\includegraphics[width=150px]{img/bipartite.png}
+	\centering
+	\caption{Bipartitnı graf \cite{bip}}
+	\label{fig:Bipartitnı graf}
+\end{figure}
+kde \(|U|= n\) sú premenné, \(|V| = m\) sú klauzuly, \(E\) obsahuje hranu \((v_i, u_j)\), ak v \(i\)-tej klauzule \(i\) vystupuje \(j\)-ta premenná.\\
+\\
+Uvaujme, e klauzuly sú v nejakom poradí \(P\), èomu zodpovedajú èíslované vrcholy \({v_1, v_2, ..., v_m}\). Uvaujme postupnos indukovanıch podgrafov \((U^i, V^i, E^i)\), kde \(V^i = {v_1, v_2, ..., v_i}\), a \(U^i, E^i\), obsahujú všetky vrcholy a príslušné hrany spojené s \(V^i\).
+
+Definujme postupnos \(d\), kde \(d_0 = 0\) a \(d_i = |U^i| - |U^{i-1}|\) (èie poèet vrcholov \(|U|\) pridanıch do podgrafu, ak pridáme \(v_i\)).\\
+
+Úlohou je nájdenie poradia \(P\) vrcholov z \(V\) také, e postupnos \(d\) je minimálna v
+lexikografickom poradí (t.j. \(d^P <= d^R\) ak existuje \(k\) také, e \(d^P_k <= d^R_k\) a pre všetky \(i < k: d^P_i = d^R_i\)).
+
+Klauzuly v algoritme è. \ref{alg: heuristic-sat} sú reprezentované ako matica, kde kadı riadok matice reprezentuje jednu klauzulu. Na prvom indexe kadého riadku, je èíslo klauzuly a potom nasledujú premenné, ktoré obsahuje, ale iba v kladnej forme.
+
+Premenné sú reprezentované tie v matici, kde kadı riadok matice reprezentuje jednu premennú. Na prvom indexe kadého riadku, je èíslo premennej a potom nasledujú èísla klauzúl, s ktorımi je daná premenná spojená.
+\begin{algorithm}[H]
+	\caption{Heuristická optimalizácia poradia klauzúl}
+	\label{alg: heuristic-sat}
+	\begin{algorithmic}
+		\renewcommand{\algorithmicensure}{\textbf{Vıstup:}}
+		\REQUIRE Matica \(\mathbf{S}\) \COMMENT{Matica \(\mathbf{S}\) z ALGORITMU \ref{alg: sat-to-mrhs-L}}
+		\ENSURE Pole \(P\)
+		\STATE Inicializuj maticu \(\mathbf{V}\)  a  \(\mathbf{U}\) 
+		\FOR[s je ve¾kos $\mathbf{S}$]{i := 0, i < s, i++}
+		\STATE Zoraï \(\mathbf{V}\) od najmenšieho stupòa
+		\STATE Zoraï \(\mathbf{U}\) od najväèšieho stupòa
+		\STATE Inicializuj \(MIN\) (klauzuly s minimálnym stupòom) a \(MAX\) (premenné s maximálnym stupòom)
+		\STATE Nájdi všetky klauzuly v \(\mathbf{V}\) s minimálnym stupòom a vlo ich hodnotu na indexe 0 do \(MIN\)
+		\IF[$m$ je ve¾kos $MIN$]{\(m\)  == 1}
+		\STATE Vlo \(MIN\)[0] do \(P\)
+		\ELSE
+		\STATE Nájdi všetky premenné z \(\mathbf{U}\) s maximálnym stupòom, ktoré sú spojené s nejakou klauzulou z \(\mathbf{V}\) a vlo ich hodnotu na indexe 0 do \(MAX\)
+		\IF[$n$ je ve¾kos $MAX$]{n == 1}
+		\STATE Vlo hodnotu na indexe 0 z klauzule z \(V\) ktorá je spojená s premennou z \(\mathbf{U}\) do \(P\)
+		\ELSE
+		\STATE Vyber náhodne jeden index z \(MAX\) a vlo index klauzule, ktorá je spojená s touto premennou do po¾a \(P\)
+		\ENDIF
+		\ENDIF
+		\STATE Odstráò vybranú klauzulu z \(\mathbf{V}\) a všetky premenné z \(\mathbf{U}\) s òou spojené.
+		\ENDFOR
+		\RETURN \(P\)
+	\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Transformácia pre Dual solver}
+%TODO
+
+\subsection{Dual solver algoritmus}
+%TODO
+
+\section{Dokumentácia k programu}
+%TODO
+\section{Experimentálna èas}
+%TODO
+\subsection{Metodika experimentov}
+%TODO
+\subsection{Vyhodnotenie experimentov}
+%TODO

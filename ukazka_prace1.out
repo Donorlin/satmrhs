@@ -5,8 +5,18 @@
 \BOOKMARK [2][]{subsection.5}{Predpokladan\351 zdroje}{section.1}% 5
 \BOOKMARK [2][]{subsection.6}{Rozvrh}{section.1}% 6
 \BOOKMARK [1][]{section.7}{Ciele rie\235enia}{}% 7
-\BOOKMARK [1][]{section.8}{Teoretick\375 cast}{}% 8
+\BOOKMARK [1][]{section.8}{Teoretick\351 z\341klady}{}% 8
 \BOOKMARK [2][]{subsection.9}{SAT}{section.8}% 9
 \BOOKMARK [2][]{subsection.17}{MRHS rovnice a s\372stavy}{section.8}% 10
-\BOOKMARK [1][]{section*.19}{Z\341ver}{}% 11
-\BOOKMARK [1][]{section*.20}{Zoznam pou\236itej literat\372ry}{}% 12
+\BOOKMARK [1][]{section.19}{Algoritmy}{}% 11
+\BOOKMARK [2][]{subsection.20}{Algoritmus na rie\235enie MRHS s\372stavy}{section.19}% 12
+\BOOKMARK [2][]{subsection.37}{Prevod SAT probl\351mu na MRHS}{section.19}% 13
+\BOOKMARK [2][]{subsection.83}{Heuristick\341 optimaliz\341cia poradia klauz\372l}{section.19}% 14
+\BOOKMARK [2][]{subsection.106}{Transform\341cia pre Dual solver}{section.19}% 15
+\BOOKMARK [2][]{subsection.107}{Dual solver algoritmus}{section.19}% 16
+\BOOKMARK [1][]{section.108}{Dokument\341cia k programu}{}% 17
+\BOOKMARK [1][]{section.109}{Experiment\341lna cast}{}% 18
+\BOOKMARK [2][]{subsection.110}{Metodika experimentov}{section.109}% 19
+\BOOKMARK [2][]{subsection.111}{Vyhodnotenie experimentov}{section.109}% 20
+\BOOKMARK [1][]{section*.112}{Z\341ver}{}% 21
+\BOOKMARK [1][]{section*.113}{Zoznam pou\236itej literat\372ry}{}% 22

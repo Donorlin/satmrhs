@@ -12,9 +12,24 @@
 \newblock Cambridge University Press, New York, 2004.
 \newblock ISBN 978-0-511-26401-6.
 
+\bibitem{jahobp}
+{\sc Jahodka, D.}
+\newblock {\em Heuristické riešenie MRHS rovníc}.
+\newblock 2018.
+
 \bibitem{fikobp}
 {\sc Kabashi, F.}
 \newblock {\em Aplikácia MRHS rovníc na riešenie SAT problému}.
 \newblock 2018.
+
+\bibitem{mrhslingebra}
+{\sc Raddum, H., and Zajac, P.}
+\newblock Mrhs solver based on linear algebra and exhaustive search.
+\newblock https://eprint.iacr.org/2018/111.pdf.
+
+\bibitem{bip}
+{\sc Wikipedia}.
+\newblock Bipartitný graf.
+\newblock \url{https://en.wikipedia.org/wiki/Bipartite_graph}.
 
 \end{thebibliography}

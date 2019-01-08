@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  6 JAN 2019 19:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  8 JAN 2019 23:29
 entering extended mode
 **./ukazka_prace1.tex
 (ukazka_prace1.tex
@@ -728,7 +728,7 @@ G,.JBIG2,.JB2,.eps]
 
 
 {C:/Users/mrave/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<img/zadanie.png, id=57, 1011.78pt x 429.605pt>
+<img/zadanie.png, id=97, 1011.78pt x 429.605pt>
 File: img/zadanie.png Graphic file (type png)
 <use img/zadanie.png>
 Package pdftex.def Info: img/zadanie.png  used on input line 15.
@@ -779,15 +779,10 @@ File: t1txtt.fd 2000/12/15 v3.1
 
 
 ] [2] [3]
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 38.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+t'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 38.
+Overfull \hbox (2.87917pt too wide) in paragraph at lines 39--40
+\T1/txr/m/n/12 pra-co-va´. Pos-tupne si zadefin-u-jeme SAT prob-lém a sús-tavy 
+rovníc s vi-ac-erými pravými stranami
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 42--45
@@ -802,7 +797,7 @@ hod-noty $\OML/txmi/m/it/12 x[] \OMS/txsy/m/n/12 2 f\OML/txmi/m/it/12 FALSE; TR
 UE\OMS/txsy/m/n/12 g$\T1/txr/m/n/12 .
  []
 
-[4]
+
 Overfull \hbox (1.21016pt too wide) in paragraph at lines 68--70
 []\T1/txr/m/n/12 Klauzula, ktorá neob-sahuje ºi-adny literál, sa nazýva prázdna
  a vy-hod-nocuje sa ako $\OML/txmi/m/it/12 FALSE:$ 
@@ -813,7 +808,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
  []
 
-
+[4]
 Overfull \hbox (22.9062pt too wide) in paragraph at lines 71--73
 []\T1/txr/m/n/12 Nastavenie log-ick-ých pre-men-ných na ne-jaké hod-noty oz-na£
 íme po-j-mom in-ter-pretá-cia(formuly). 
@@ -824,16 +819,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
 
-
-LaTeX Warning: Citation `mrhslingebra' on page 5 undefined on input line 79.
-
-
-LaTeX Warning: Citation `mrhslingebra' on page 5 undefined on input line 82.
-
-[5]) [6] (includes/conclusion.tex) [7
+[5] [6]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 105.
+ [7] [8] [9]
+Overfull \vbox (7.79333pt too high) has occurred while \output is active []
 
 
-] (ukazka_prace1.bbl) [8
+[10]
+<img/bipartite.png, id=268, 653.44125pt x 635.37375pt>
+File: img/bipartite.png Graphic file (type png)
+<use img/bipartite.png>
+Package pdftex.def Info: img/bipartite.png  used on input line 212.
+(pdftex.def)             Requested size: 150.56305pt x 146.39465pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--220
+
+ []
+
+
+Overfull \hbox (2.9638pt too wide) in paragraph at lines 217--220
+\T1/txr/m/n/12 Uvaºujme, ºe klauzuly sú v ne-jakom po-radí $\OML/txmi/m/it/12 P
+$\T1/txr/m/n/12 , £omu zod-povedajú £íslo-vané vr-choly $[]$.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+[11 <./img/bipartite.png>] [12] [13]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 267.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+t'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 267.
+
+) [14] (includes/conclusion.tex) [15
+
+
+] (ukazka_prace1.bbl) [16
 
 
 ]
@@ -844,30 +873,26 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
 Package rerunfilecheck Info: File `ukazka_prace1.out' has not changed.
-(rerunfilecheck)             Checksum: 7E9D3A587040B6FEF878A8D6CA899B37;704.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: D855A9989B1428EFBCEB9CCC7E743ECE;1459.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 11714 strings out of 492970
- 161300 string characters out of 3143823
- 300973 words of memory out of 3000000
- 15287 multiletter control sequences out of 15000+200000
+ 11876 strings out of 492970
+ 163268 string characters out of 3143823
+ 310363 words of memory out of 3000000
+ 15344 multiletter control sequences out of 15000+200000
  56489 words of font info for 87 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,37p,662b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,7n,37p,662b,781s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/MikTex/fonts/enc/dvips/base/8r.enc}<D:/MikTex/fonts/type1/public/txfonts/
 rtxmi.pfb><D:/MikTex/fonts/type1/public/txfonts/rtxr.pfb><D:/MikTex/fonts/type1
 /public/txfonts/rtxsc.pfb><D:/MikTex/fonts/type1/public/txfonts/t1xtt.pfb><D:/M
 ikTex/fonts/type1/public/txfonts/txsy.pfb><D:/MikTex/fonts/type1/public/txfonts
 /txsyb.pfb><D:/MikTex/fonts/type1/urw/times/utmb8a.pfb><D:/MikTex/fonts/type1/u
 rw/times/utmr8a.pfb><D:/MikTex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ukazka_prace1.pdf (11 pages, 192433 bytes).
+Output written on ukazka_prace1.pdf (19 pages, 466872 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 139 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 
