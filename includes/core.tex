@@ -31,9 +31,9 @@ Najhlavnejším zdrojom, ktorı budeme potrebova pre urıchlenie vıpoètov je prístu
 Všetci traja èlenovia máme rovnakı rozvrh. So zadávate¾om tímového projektu máme konzultaènú hodinu dohodnutú na kadu stredu semestra o 14 hodine.
 
 \section{Ciele riešenia}
-Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešenie sústav s viacerımi pravımi stranami. Ide o program napísanı v jazyku C. Algoritmus riešenia sústavy je popísanı v teoretickej kapitole projektu. Cie¾om projektu je rozšíri tento program o novı algoritmus riešenia sústav tzv. Dual solver, o heuristickú optimalizáciu poradia klauzúl SAT formuli, o prevod SAT formuli do MRHS sústavy a o funkcionalitu v podobe špecifickıch vıstupov a exit kódov programu, ktoré vyaduje SAT challenge pre zúèastnenie. 
+Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešenie sústav s viacerımi pravımi stranami. Ide o program napísanı v jazyku C. Algoritmus riešenia sústavy je popísanı v kapitole o algoritmoch. Cie¾om projektu je rozšíri tento program o novı algoritmus riešenia sústav tzv. Dual solver, o heuristickú optimalizáciu poradia klauzúl CNF formuli, o prevod CNF formuli do MRHS sústavy a o funkcionalitu v podobe špecifickıch vıstupov a exit kódov programu, ktoré vyaduje SAT challenge pre zúèastnenie. 
 
-Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl
+Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT (3-CNF) formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl
 
 \section{Teoretické základy}
 V teoretickej èasti tejto práce si zadefinujeme jednotlivé pojmy, s ktorımi budeme ïalej pracova. Postupne si zadefinujeme SAT problém a sústavy rovníc s viacerımi pravımi stranami (MRHS).
@@ -95,7 +95,7 @@ Takisto budeme oznaèova mnoinu vektorov pravıch strán \(S_1 \times S_2 \times 
 
 
 \section{Algoritmy}
-V tejto kapitole si predstavíme všetky algoritmy, ktoré budeme vyuíva. Algoritmus na riešenie MRHS sústav, ktorı vyuíva MRHS solver je ukázanı v kapitole \ref{subsec: algMRHS}. Ostatné algoritmy sú algoritmy, ktoré sme implementovali do MRHS solvera a to prevod SAT problému na MRHS sústavu, heuristická optimalizácia poradia klauzúl v SAT formule, Dual solver algoritmus na riešenie sústavy a transformácia MRHS sústavy na formát, ktorı vyaduje Dual solver algoritmus na vstupe.
+V tejto kapitole si predstavíme všetky algoritmy, ktoré budeme vyuíva. Algoritmus na riešenie MRHS sústav, ktorı vyuíva MRHS solver je ukázanı v kapitole \ref{subsec: algMRHS}. Ostatné algoritmy sú algoritmy, ktoré sme implementovali do MRHS solvera a to prevod SAT problému na MRHS sústavu, heuristická optimalizácia poradia klauzúl v CNF formuli, Dual solver algoritmus na riešenie sústavy a transformácia MRHS sústavy na formát, ktorı vyaduje Dual solver algoritmus na vstupe.
 
 \subsection{Algoritmus na riešenie MRHS sústavy} \label{subsec: algMRHS}
 V tejto podkapitole si ukáeme algoritmus riešenia MRHS sústav, ktorı je implementovanı v MRHS solveri. Zápis tohoto algoritmu je prevzatı z \cite{jahobp} a \cite{mrhslingebra}
@@ -255,10 +255,45 @@ Premenné sú reprezentované tie v matici, kde kadı riadok matice reprezentuje j
 	\end{algorithmic}
 \end{algorithm}
 
+Úlohou algoritmu je vysklada novú sústavu, takım spôsobom, e kadá pridaná klauzula do sústavy pridá èo najmenej novıch premennıch. Inak povedané, sú preferované klauzuly, ktoré sa vyskytujú v najviac klauzulách CNF formuly.
 
+\newpage
 \subsection{Transformácia pre Dual solver}
-%TODO
+V tejto kapitole si ukáeme algoritmus transformácie MRHS sústavy pre algoritmus Dual solver. 
 
+Ako prvé je potrebné vyrobi kontrolnú maticu  \(\mathbf{H}\) ku matici  \(\mathbf{M}\). Matica  \(\mathbf{M}\) má rozmery \(n \times l\), kde n je poèet riadkov matice a l je poèet ståpcov. Po upravení matice \(\mathbf{M}\) na redukovanı stupòovitı tvar, zoberieme \(n - l\) poslednıch såpcov a pridáme na spodnú èas matice maticu identity o ve¾kosti \(n \times n\). Tımto dostaneme kontrolnú maticu \(\mathbf{H}\), pre ktorú platí \(\mathbf{M}\mathbf{H} = 0 \). 
+
+Ako druhé vytvoríme maticu \(\mathbf{S}\), ktorú vyrobíme nasledovne: 
+\[
+\mathbf{S} = 
+\left(
+\begin{array}{cccc}
+S_1 & 0 & \dots & 0 \\
+0 & S_2 & \dots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 01 & \dots & S_m  
+\end{array}
+\right)
+\]
+Matica  \(\mathbf{S}\) je blokovo diagonálna matica vytvorená z mnoín pravıch strán sústavy. Pre správnu pravú stranu \(s\) musí plati \(x\mathbf{M} = s\) a teda musí plati aj \(s \cdot \mathbf{H}^T = 0\). Vıstupom algoritmu bude matica \(\mathbf{V}\), pre ktorú platí \(\mathbf{V} = \mathbf{S} \cdot \mathbf{H}^T\) \cite{dualspacesolver}. Táto matica bude vstupom pre Dual solver algoritmus.
+
+Nišie je spísanı pseudokód pre tento algoritmus.
+
+\begin{algorithm}[H]
+	\caption{Vytvorenie Dual solver vstupnej matice}
+	\label{alg: mrhsdtodualsolver} 
+	\begin{algorithmic} 
+		\REQUIRE MRHS sústava \(x\mathbf{M} \in S = S_1 \times S_2 \times \cdots \times S_m\)
+		\ENSURE Matica \(\mathbf{V}\)\\
+		\STATE Uprav maticu \(\mathbf{M}\) na redukovanı stupòovitı tvar.
+		\STATE Zober \(n - l\) poslednıch såpcov a pridaj k nim maticu identity o ve¾kosti \(n \times n\). Vıslednú maticu oznaèíme \(\mathbf{H}\)
+		\STATE 	Vytvor blokovo diagonálnu maticu  \(\mathbf{S}\) z mnoiny pravıch strán sústavy.
+		\STATE Vytvor maticu \(\mathbf{V}\), pre ktorú platí \(\mathbf{V} = \mathbf{S} \cdot \mathbf{H}^T\)
+		\RETURN \(\mathbf{V}\)
+	\end{algorithmic}
+\end{algorithm}
+
+\newpage
 \subsection{Dual solver algoritmus}
 %TODO
 

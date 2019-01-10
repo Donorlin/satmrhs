@@ -32,4 +32,8 @@
 \newblock Bipartitný graf.
 \newblock \url{https://en.wikipedia.org/wiki/Bipartite_graph}.
 
+\bibitem{dualspacesolver}
+{\sc Zajac, P., Bednáriková, A., Jahodka, D., and Kabashi, F.}
+\newblock Solving mrhs systems generated from k-sat instances.
+
 \end{thebibliography}

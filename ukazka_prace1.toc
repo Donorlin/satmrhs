@@ -14,11 +14,11 @@
 \contentsline {subsection}{\numberline {4.1}Algoritmus na rie\v senie MRHS s\'ustavy}{7}{subsection.20}
 \contentsline {subsection}{\numberline {4.2}Prevod SAT probl\'emu na MRHS}{8}{subsection.37}
 \contentsline {subsection}{\numberline {4.3}Heuristick\'a optimaliz\'acia poradia klauz\'ul}{11}{subsection.83}
-\contentsline {subsection}{\numberline {4.4}Transform\'acia pre Dual solver}{12}{subsection.106}
-\contentsline {subsection}{\numberline {4.5}Dual solver algoritmus}{12}{subsection.107}
-\contentsline {section}{\numberline {5}Dokument\'acia k programu}{13}{section.108}
-\contentsline {section}{\numberline {6}Experiment\'alna \v cas\v t}{14}{section.109}
-\contentsline {subsection}{\numberline {6.1}Metodika experimentov}{14}{subsection.110}
-\contentsline {subsection}{\numberline {6.2}Vyhodnotenie experimentov}{14}{subsection.111}
-\contentsline {section}{Z\'{a}ver}{15}{section*.112}
-\contentsline {section}{Zoznam pou\v {z}itej literat\'{u}ry}{16}{section*.113}
+\contentsline {subsection}{\numberline {4.4}Transform\'acia pre Dual solver}{13}{subsection.106}
+\contentsline {subsection}{\numberline {4.5}Dual solver algoritmus}{14}{subsection.113}
+\contentsline {section}{\numberline {5}Dokument\'acia k programu}{15}{section.114}
+\contentsline {section}{\numberline {6}Experiment\'alna \v cas\v t}{16}{section.115}
+\contentsline {subsection}{\numberline {6.1}Metodika experimentov}{16}{subsection.116}
+\contentsline {subsection}{\numberline {6.2}Vyhodnotenie experimentov}{16}{subsection.117}
+\contentsline {section}{Z\'{a}ver}{17}{section*.118}
+\contentsline {section}{Zoznam pou\v {z}itej literat\'{u}ry}{18}{section*.119}
