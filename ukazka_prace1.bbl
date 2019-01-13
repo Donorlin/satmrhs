@@ -6,6 +6,11 @@
 \newblock Proceedings of the Third Annual ACM Symposium on Theory of Computing,
   1971.
 
+\bibitem{satcomp}
+{\sc Heule, M., Jarvisalo, M., and Suda, M.}
+\newblock Sat competition.
+\newblock \url{http://sat2018.forsyte.tuwien.ac.at/}.
+
 \bibitem{satdef}
 {\sc HURTH, M., R.~M.}
 \newblock {\em Logic in computer science}, 2~ed.
@@ -31,6 +36,11 @@
 {\sc Wikipedia}.
 \newblock Bipartitný graf.
 \newblock \url{https://en.wikipedia.org/wiki/Bipartite_graph}.
+
+\bibitem{subsetsum}
+{\sc Wikipedia}.
+\newblock Subset sum problem.
+\newblock \url{https://en.wikipedia.org/wiki/Subset_sum_problem}.
 
 \bibitem{dualspacesolver}
 {\sc Zajac, P., Bednáriková, A., Jahodka, D., and Kabashi, F.}

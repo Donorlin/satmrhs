@@ -132,6 +132,7 @@
 \renewcommand{\algorithmicrequire}{\textbf{Vstup:}}
 \renewcommand{\algorithmicensure}{\textbf{Výstup:}}
 \theoremstyle{definition}
+\usepackage{fancyvrb} % na centerovatelny verbatim BVerbatim
 
 
 \IfEqCase*{\FEIcoding}{

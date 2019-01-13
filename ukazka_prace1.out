@@ -12,11 +12,17 @@
 \BOOKMARK [2][]{subsection.20}{Algoritmus na rie\235enie MRHS s\372stavy}{section.19}% 12
 \BOOKMARK [2][]{subsection.37}{Prevod SAT probl\351mu na MRHS}{section.19}% 13
 \BOOKMARK [2][]{subsection.83}{Heuristick\341 optimaliz\341cia poradia klauz\372l}{section.19}% 14
-\BOOKMARK [2][]{subsection.106}{Transform\341cia pre Dual solver}{section.19}% 15
-\BOOKMARK [2][]{subsection.113}{Dual solver algoritmus}{section.19}% 16
+\BOOKMARK [2][]{subsection.106}{Transform\341cia pre Dual space solver}{section.19}% 15
+\BOOKMARK [2][]{subsection.113}{Dual space solution algoritmus}{section.19}% 16
 \BOOKMARK [1][]{section.114}{Dokument\341cia k programu}{}% 17
-\BOOKMARK [1][]{section.115}{Experiment\341lna cast}{}% 18
-\BOOKMARK [2][]{subsection.116}{Metodika experimentov}{section.115}% 19
-\BOOKMARK [2][]{subsection.117}{Vyhodnotenie experimentov}{section.115}% 20
-\BOOKMARK [1][]{section*.118}{Z\341ver}{}% 21
-\BOOKMARK [1][]{section*.119}{Zoznam pou\236itej literat\372ry}{}% 22
+\BOOKMARK [2][]{subsection.115}{SAT challenge \235pecifik\341cia}{section.114}% 18
+\BOOKMARK [3][]{subsubsection.116}{DIMACS input form\341t}{subsection.115}% 19
+\BOOKMARK [3][]{subsubsection.119}{Output form\341t}{subsection.115}% 20
+\BOOKMARK [2][]{subsection.122}{MRHS solver}{section.114}% 21
+\BOOKMARK [3][]{subsubsection.123}{Vstupn\375 form\341t pre MRHS solver}{subsection.122}% 22
+\BOOKMARK [2][]{subsection.126}{Nov\341 funkcionalita}{section.114}% 23
+\BOOKMARK [1][]{section.127}{Experiment\341lna cast}{}% 24
+\BOOKMARK [2][]{subsection.128}{Metodika experimentov}{section.127}% 25
+\BOOKMARK [2][]{subsection.129}{Vyhodnotenie experimentov}{section.127}% 26
+\BOOKMARK [1][]{section*.130}{Z\341ver}{}% 27
+\BOOKMARK [1][]{section*.131}{Zoznam pou\236itej literat\372ry}{}% 28

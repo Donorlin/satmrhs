@@ -94,7 +94,7 @@ Takisto budeme oznaèova mnoinu vektorov pravıch strán \(S_1 \times S_2 \times 
 \textit{Pozn.:} Ståpce, ktoré patria \(\mathbf{M_i}\) nazıvame blok. V texte sa èasto budeme odvoláva na \(i\)-ty blok matice \(\mathbf{M}\).
 
 
-\section{Algoritmy}
+\section{Algoritmy} \label{sec: algorithms}
 V tejto kapitole si predstavíme všetky algoritmy, ktoré budeme vyuíva. Algoritmus na riešenie MRHS sústav, ktorı vyuíva MRHS solver je ukázanı v kapitole \ref{subsec: algMRHS}. Ostatné algoritmy sú algoritmy, ktoré sme implementovali do MRHS solvera a to prevod SAT problému na MRHS sústavu, heuristická optimalizácia poradia klauzúl v CNF formuli, Dual solver algoritmus na riešenie sústavy a transformácia MRHS sústavy na formát, ktorı vyaduje Dual solver algoritmus na vstupe.
 
 \subsection{Algoritmus na riešenie MRHS sústavy} \label{subsec: algMRHS}
@@ -131,7 +131,7 @@ V tejto podkapitole si ukáeme algoritmus riešenia MRHS sústav, ktorı je impleme
 
 Tento algoritmus vráti len riešenia upravenej sústavy, a preto je nutné na základe vzorca \[x\mathbf{A^{-1}}\mathbf{A}\mathbf{M}\mathbf{B} \in S_M\mathbf{B},\] mono spätne vyjadri riešenie pôvodnej sústavy. Ak pre upravenú sústavu platí vzah $\mathbf{M'}=\mathbf{A}\mathbf{M}$, potom pre riešenia upravenej sústavy platí vzah $y=x\mathbf{A^{-1}}$. Keï osamostatníme $x$ dostaneme vzorec $x=y\mathbf{A}$, ktorım spätne vyrátame riešenia pôvodnej sústavy \cite{jahobp}. 
 	
-\subsection{Prevod SAT problému na MRHS}
+\subsection{Prevod SAT problému na MRHS} \label{subsubsec: satToMrhs}
  Kadá klauzula bude u nás predstavova jeden blok matice o ve¾kosti \(m \times n\), kde \(m\) je poèet literálov v klauzule a \(n\) je poèet všetkıch literálov. Poèet blokov hlavnej matice, je rovnı poètu klauzúl SAT problému. Prevod z formátu DIMACS na MRHS urobíme pomocou algoritmu v pseudokóde, ktorı je popísanı v algoritme \ref{alg: sat-to-mrhs-L}.
 
 Pravé strany dostaneme tak, e si vypíšeme všetky moné riešenia pre danú klauzulu, ktorıch je \(2^{n}\), kde \(n\) oznaèuje poèet literálov v klauzule, a odstránime práve jedno riešenie, pre ktoré by klauzula nadobudla hodnotu \(FALSE\). Z toho dostávame e poèet pravıch strán je  \(2^{n}-1\).
@@ -203,7 +203,7 @@ Pravé strany dostaneme tak, e si vypíšeme všetky moné riešenia pre danú klauzu
 	\end{algorithmic}
 \end{algorithm}
 
-\subsection{Heuristická optimalizácia poradia klauzúl}
+\subsection{Heuristická optimalizácia poradia klauzúl} \label{subsubsec: heuristicSAT}
 V tejto kapitole si ukáeme heuristickı algoritmus na preusporiadanie klauzúl z práce \cite{fikobp}.
 
 
@@ -258,7 +258,7 @@ Premenné sú reprezentované tie v matici, kde kadı riadok matice reprezentuje j
 Úlohou algoritmu je vysklada novú sústavu, takım spôsobom, e kadá pridaná klauzula do sústavy pridá èo najmenej novıch premennıch. Inak povedané, sú preferované klauzuly, ktoré sa vyskytujú v najviac klauzulách CNF formuly.
 
 \newpage
-\subsection{Transformácia pre Dual solver}
+\subsection{Transformácia pre Dual space solver}
 V tejto kapitole si ukáeme algoritmus transformácie MRHS sústavy pre algoritmus Dual solver. 
 
 Ako prvé je potrebné vyrobi kontrolnú maticu  \(\mathbf{H}\) ku matici  \(\mathbf{M}\). Matica  \(\mathbf{M}\) má rozmery \(n \times l\), kde n je poèet riadkov matice a l je poèet ståpcov. Po upravení matice \(\mathbf{M}\) na redukovanı stupòovitı tvar, zoberieme \(n - l\) poslednıch såpcov a pridáme na spodnú èas matice maticu identity o ve¾kosti \(n \times n\). Tımto dostaneme kontrolnú maticu \(\mathbf{H}\), pre ktorú platí \(\mathbf{M}\mathbf{H} = 0 \). 
@@ -293,12 +293,138 @@ Nišie je spísanı pseudokód pre tento algoritmus.
 	\end{algorithmic}
 \end{algorithm}
 
-\newpage
-\subsection{Dual solver algoritmus}
-%TODO
+\subsection{Dual space solution algoritmus} \label{subsec: dualspacesolutionalgorithm}
+Dual space solution algoritmus, narozdiel od pôvodného algoritmu \ref{alg: solver} riešenia MRHS sústavy nie je závislı od poriadia rovníc vrámci sústavy. Princíp algoritmu je zaloenı na subset sum probléme \cite{subsetsum}, na nájdení urèitého súètu v danej mnoine. V našom prípade pôjde o nájdení súètu 0 v rámci ståpcu matice \(\mathbf{V}\). Z toho vyplıva predpoklad, e tento algoritmus bude silno závislı na hustote 1 v matici  \(\mathbf{V}\) a poradí ståpcov. Poradie ståpcov môe by zmenené pomocou lineárnej algebri na ståpcoch bez zmeny pôvodného riešenia MRHS sústavy.
+
+Bliší popis algoritmu spolu s pseudokódom môete nájs v èlánku \cite{dualspacesolver}, ktorı vznikol ako produkt tohoto tímového projektu. Vısledky experimentov dual space solution algoritmu nájdete v kapitole o experimentoch. 
 
 \section{Dokumentácia k programu}
+V tejto kapitole si zhrnieme funkcionalitu, ktorá bola pridaná do MRHS solvera na základe SAT challenge špecifikácie.
+
+\subsection{SAT challenge špecifikácia}
+V tejto kapitole je struène popísaná SAT challenge špecifikácia. Zdroj: \cite{satcomp}. Nako¾ko tento tímovı projekt je viac zameranı na vedeckú èinnos, zo SAT challenge špecifikácie sme si privlastnili len input a output formáty, ktoré ma náš program spåòa. 
+
+\subsubsection{DIMACS input formát} \label{subsubsec: DIMACS}
+DIMACS CNF formát, je štandardnı vstupnı formát pre SAT solvery. Súbor DIMACS zaèína komentármi, ktoré sú na zaèiatku oznaèené malım písmenom c. Prvı riadok po komentári, je v tvare \(p\) \(cnf\) \(i\) \(j\). Premená \(i\) oznaèuje presnı poèet premennıch a \(j\) presnı poèet klauzúl obsiahnutıch v súbore, potom nasledujú klauzuly. Kadá klauzula môe obsahova nenulové èíslo z rozpätia \(-i\) a po \(i\). Záporné èísla oznaèujú negáciu. Kadı riadok, v ktorom je zapísaná klauzula, je ukonèenı nulou. Jeden riadok nemôe obsahova navzájom opaèné literály. Riadok, ktorı zaèína písmenom \(x\), oznaèuje klauzulu v \(XOR\) tvare.
+
+\begin{figure}[H]
+	\centering
+	\begin{BVerbatim}
+	c Súbor zaèína komentármi
+	p cnf 5 3
+	1 -5 4 0
+	-1 5 3 4 0
+	x 3 4 0
+	\end{BVerbatim}
+	\caption{Príklad DIMACS vstupného súboru.}
+\end{figure}
+
+V logickom tvare by vyzerala formula z obrázka è. 3 následovne:
+
+\[
+(x{_1} \vee \neg x{_5} \vee x{_4}) \wedge (\neg x{_1} \vee x{_5} \vee x{_3} \vee x{_4}) \wedge (\neg x{_3} \vee \neg x{_4}) \wedge (x{_3} \vee x{_4})
+\]
+
+\subsubsection{Output formát}
+Do vıstupu programu boli pridané vypísi splnite¾nosti vstupnej k-SAT klauzule. V nišie zobrazenej tabu¾ke sú zapísané exit kódy programu spolu s vypísom splnite¾nosti, ktorı predstavujú. 
+
+\begin{table}[H]
+	\centering
+	\caption{Exit kódy}
+	\begin{tabular}{|l|l|}
+		\hline
+		exit(kód) & SAT ?         \\ \hline
+		exit(10)  & SATISFIABLE   \\ \hline
+		exit(20)  & UNSATISFIABLE \\ \hline
+		exit(0)   & UNKNOWN       \\ \hline
+	\end{tabular}
+\end{table} 
+
+\subsection{MRHS solver} \label{sec: solver}
+Na riešenie sústav s viacerımi pravımi stranami budeme pouíva program MRHS solver, ktorı vyvinul prof. Ing. Pavol Zajac, phD. Algoritmus \ref{alg: solver}, ktorı sme si predstavili v kapitole \ref{sec: algorithms} sa vyuíva práve v tomto programe na riešenie sústavy. 
+
+
+Jednım z naších cielov bolo implementova aby vstupom algoritmu bol súbor formátu DIMACS ukázanı v kapitole \ref{subsubsec: DIMACS}. Následne aby sme mohli vyuíva optimalizaènı algoritmus z kapitoly \ref{subsubsec: heuristicSAT}, museli sme rozšíri MRHS solver o nové interface-i aby vedel pracova s CNF štruktúrami. Nako¾ko pôvodnı algoritmus \ref{alg: solver} riešenia sústavy stále pracuje so štruktúrami podobnımi s tımi spomenutımi v nasledujúcej kapitole o vstupnom formáte súborov pre MRHS solver, bolo nutné implementova algoritmus z kapitoly \ref{subsubsec: satToMrhs} aby sme k-SAT problém transformovali do MRHS sústavy. Následne takto transformovanı k-SAT problém je moné rieši MRHS solverom. 
+
+V prípade, e máme MRHS sústavu v takto pôvodnom tvare, je moné pomocou algoritmu \ref{alg: mrhsdtodualsolver} transformova sústavu do matice \(\mathbf{V}\), ktorú vie vypoèíta algoritmus Dual space solver spomenutı v kapitole \ref{subsec: dualspacesolutionalgorithm} a podrobnejšie spísanı v èlánku  \cite{dualspacesolver}.
+
+\subsubsection{Vstupnı formát pre MRHS solver}
+Pôvodnı vstupnı súbor obsahuje MRHS sústavu zapísanú v nasledovnom formáte: 
+\begin{itemize}
+	\item konfiguraènı riadok v tvare \(n\ m\ k_1\ l_1\ k_2\ l_2\ \cdots\ k_m\ l_m\), kde \(n\) je poèet premennıch, \(m\) poèet blokov sústavy, \(k_i\) je poèet ståpcov \(i\)-teho bloku, \(l_i\) je poèet pravıch strán \(i\)-teho bloku,
+	\item \(n\) riadkov zaèínajúcich a konèiacich hranatımi zátvorkami, obsahujúcich \(\sum_{i=1}^{m} k_i\) bitov,
+	\item \(\sum_{i=1}^{m} l_i\) riadkov zaèínajúcich a konèiacich hranatımi zátvorkami, obsahujúcich \(k_i\) bitov.
+\end{itemize}
+
+Na nišie zobrazenom obrázku è. \ref{fig: inputMRHSexample} je ukázanı príklad vstupného súboru pre MRHS solver. Sústava obsahuje 3 premenné, 2 rovnice, kde prvá rovnica obsahuje 7 pravıch strán a 3 ståpce a druhá rovnica obsahuje 2 pravé strany a 2 ståpce.
+
+V algebraickom zápise, MRHS sústava z obrázka è. \ref{fig: inputMRHSexample} vyzerá následovne: 
+
+MATICA
+\[
+\mathbf{M} = 
+\left[
+\begin{array}{ccc|ccc}
+1 & 0 & 0 & 1 & 0  \\
+0 & 1 & 0 & 0 & 1  \\
+0 & 0 & 1 & 0 & 0  
+\end{array}
+\right]
+\]
+
+
+PRAVÉ STRANY
+\[
+S = 
+\left\{
+\begin{array}{ccc}
+(0, 0, 1);\\
+(0, 1, 0);\\
+(0, 1, 1);\\
+(1, 0, 1);\\
+(1, 1, 0);\\
+(1, 0, 0);\\
+(1, 1, 1);
+\end{array}
+\right\}
+\times
+\left\{
+\begin{array}{cc}
+(0, 0);\\
+(0, 1);\\
+(1, 0);
+\end{array}
+\right\}
+\]
+
+\begin{figure}[H]
+	\centering
+	\begin{BVerbatim}
+	3 2 3 7 2 3
+	[100 10]
+	[010 01]
+	[001 00]
+	
+	[001]
+	[010]
+	[011]
+	[101]
+	[110]
+	[100]
+	[111]
+	
+	[00]
+	[01]
+	[10]
+	\end{BVerbatim}
+	\caption{Príklad MRHS vstupného súboru.}
+	\label{fig: inputMRHSexample}
+\end{figure}
+
+\subsection{Nová funkcionalita}
+
 %TODO
+
 \section{Experimentálna èas}
 %TODO
 \subsection{Metodika experimentov}
