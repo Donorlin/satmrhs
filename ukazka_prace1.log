@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  13 JAN 2019 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  16 JAN 2019 18:31
 entering extended mode
 **./ukazka_prace1.tex
 (ukazka_prace1.tex
@@ -739,7 +739,7 @@ G,.JBIG2,.JB2,.eps]
 
 
 {C:/Users/mrave/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<img/zadanie.png, id=121, 1011.78pt x 429.605pt>
+<img/zadanie.png, id=137, 1011.78pt x 429.605pt>
 File: img/zadanie.png Graphic file (type png)
 <use img/zadanie.png>
 Package pdftex.def Info: img/zadanie.png  used on input line 15.
@@ -765,11 +765,11 @@ File: utxmia.fd 2000/12/15 v3.1
 LaTeX Font Info:    Try loading font information for U+txsyc on input line 3.
 (D:\MikTex\tex\latex\txfonts\utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
-))
+) [3])
 \tf@toc=\write6
 \openout6 = `ukazka_prace1.toc'.
 
- [3] (includes/core.tex
+ [4] (includes/core.tex
 \c@defn=\count154
 
 Overfull \hbox (2.87816pt too wide) in paragraph at lines 12--13
@@ -838,7 +838,7 @@ Overfull \vbox (7.79333pt too high) has occurred while \output is active []
 
 
 [10]
-<img/bipartite.png, id=298, 653.44125pt x 635.37375pt>
+<img/bipartite.png, id=322, 653.44125pt x 635.37375pt>
 File: img/bipartite.png Graphic file (type png)
 <use img/bipartite.png>
 Package pdftex.def Info: img/bipartite.png  used on input line 212.
@@ -861,38 +861,89 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
 [11 <./img/bipartite.png>] [12] [13] [14] [15] [16] [17]
 
+LaTeX Warning: Reference `subsec: metodikaEXP' on page 18 undefined on input li
+ne 433.
+
+[18]
+
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 428.
+(hyperref)                removing `\textasciicaron' on input line 434.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 428.
-
-) [18] (includes/conclusion.tex) [19
+(hyperref)                removing `\textasciicaron' on input line 434.
 
 
-] (ukazka_prace1.bbl) [20
+Overfull \hbox (6.82788pt too wide) in paragraph at lines 466--468
+\T1/txr/m/n/12 liko-vali nami im-ple-men-to-vanú heuri-stickú op-ti-mal-izá-ciu
+ po-ra-dia klauzúl. Následne sme porovná-
+ []
+
+[19]
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 472.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 472.
+
+<img/3satPevnyPomer.png, id=436, 1003.75pt x 602.25pt>
+File: img/3satPevnyPomer.png Graphic file (type png)
+<use img/3satPevnyPomer.png>
+Package pdftex.def Info: img/3satPevnyPomer.png  used on input line 476.
+(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
+<img/3satPremenlivyPomer.png, id=438, 1003.75pt x 602.25pt>
+File: img/3satPremenlivyPomer.png Graphic file (type png)
+<use img/3satPremenlivyPomer.png>
+Package pdftex.def Info: img/3satPremenlivyPomer.png  used on input line 488.
+(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
+[20 <./img/3satPevnyPomer.png (PNG copy)>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 494.
+
+<img/4satPevnyPomer.png, id=445, 1003.75pt x 602.25pt>
+File: img/4satPevnyPomer.png Graphic file (type png)
+<use img/4satPevnyPomer.png>
+Package pdftex.def Info: img/4satPevnyPomer.png  used on input line 497.
+(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
+[21 <./img/3satPremenlivyPomer.png (PNG copy)>]
+<img/4satPremenlivyPomer.png, id=453, 1003.75pt x 602.25pt>
+File: img/4satPremenlivyPomer.png Graphic file (type png)
+<use img/4satPremenlivyPomer.png>
+Package pdftex.def Info: img/4satPremenlivyPomer.png  used on input line 507.
+(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
+) [22 <./img/4satPevnyPomer.png (PNG copy)>] [23 <./img/4satPremenlivyPomer.png
+ (PNG copy)>] (ukazka_prace1.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 4--9
+\T1/txtt/m/n/12 physics . uiuc . edu / ~nigel / courses / 563 / Essays _ 2017 /
+ PDF / chertkov . pdf$[][]\T1/txr/m/n/12 ,
+ []
+
+) [24
 
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
-
-(ukazka_prace1.aux)
+ (ukazka_prace1.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
 Package rerunfilecheck Info: File `ukazka_prace1.out' has not changed.
-(rerunfilecheck)             Checksum: 87AE9A8A1CD0007540DBF8375EE3B91E;1941.
+(rerunfilecheck)             Checksum: 2C32D7928F1D968DFCF1269A7FF0054D;2296.
+
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 12287 strings out of 492970
- 169638 string characters out of 3143823
- 318362 words of memory out of 3000000
- 15726 multiletter control sequences out of 15000+200000
- 56489 words of font info for 87 fonts, out of 3000000 for 9000
+ 12374 strings out of 492970
+ 171098 string characters out of 3143823
+ 318811 words of memory out of 3000000
+ 15789 multiletter control sequences out of 15000+200000
+ 69559 words of font info for 122 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,10n,37p,783b,781s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/MikTex/fonts/enc/dvips/base/8r.enc}<D:/MikTex/fonts/type1/public/txfonts/
@@ -902,9 +953,9 @@ ikTex/fonts/type1/public/txfonts/txex.pfb><D:/MikTex/fonts/type1/public/txfonts
 /txsy.pfb><D:/MikTex/fonts/type1/public/txfonts/txsyb.pfb><D:/MikTex/fonts/type
 1/urw/times/utmb8a.pfb><D:/MikTex/fonts/type1/urw/times/utmr8a.pfb><D:/MikTex/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on ukazka_prace1.pdf (23 pages, 495367 bytes).
+Output written on ukazka_prace1.pdf (28 pages, 596145 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 164 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 555 PDF objects out of 1000 (max. 8388607)
+ 185 named destinations out of 1000 (max. 500000)
+ 287 words of extra memory for PDF output out of 10000 (max. 10000000)
 

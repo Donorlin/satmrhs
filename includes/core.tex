@@ -258,7 +258,7 @@ Premenné sú reprezentované tie v matici, kde kadı riadok matice reprezentuje j
 Úlohou algoritmu je vysklada novú sústavu, takım spôsobom, e kadá pridaná klauzula do sústavy pridá èo najmenej novıch premennıch. Inak povedané, sú preferované klauzuly, ktoré sa vyskytujú v najviac klauzulách CNF formuly.
 
 \newpage
-\subsection{Transformácia pre Dual space solver}
+\subsection{Transformácia pre Dual space solver} \label{subsec: mrhstodual}
 V tejto kapitole si ukáeme algoritmus transformácie MRHS sústavy pre algoritmus Dual solver. 
 
 Ako prvé je potrebné vyrobi kontrolnú maticu  \(\mathbf{H}\) ku matici  \(\mathbf{M}\). Matica  \(\mathbf{M}\) má rozmery \(n \times l\), kde n je poèet riadkov matice a l je poèet ståpcov. Po upravení matice \(\mathbf{M}\) na redukovanı stupòovitı tvar, zoberieme \(n - l\) poslednıch såpcov a pridáme na spodnú èas matice maticu identity o ve¾kosti \(n \times n\). Tımto dostaneme kontrolnú maticu \(\mathbf{H}\), pre ktorú platí \(\mathbf{M}\mathbf{H} = 0 \). 
@@ -299,7 +299,7 @@ Dual space solution algoritmus, narozdiel od pôvodného algoritmu \ref{alg: solve
 Bliší popis algoritmu spolu s pseudokódom môete nájs v èlánku \cite{dualspacesolver}, ktorı vznikol ako produkt tohoto tímového projektu. Vısledky experimentov dual space solution algoritmu nájdete v kapitole o experimentoch. 
 
 \section{Dokumentácia k programu}
-V tejto kapitole si zhrnieme funkcionalitu, ktorá bola pridaná do MRHS solvera na základe SAT challenge špecifikácie.
+V tejto kapitole si zhrnieme funkcionalitu, ktorá bola pridaná do MRHS solvera na základe SAT challenge špecifikácie a algoritmov.
 
 \subsection{SAT challenge špecifikácia}
 V tejto kapitole je struène popísaná SAT challenge špecifikácia. Zdroj: \cite{satcomp}. Nako¾ko tento tímovı projekt je viac zameranı na vedeckú èinnos, zo SAT challenge špecifikácie sme si privlastnili len input a output formáty, ktoré ma náš program spåòa. 
@@ -422,12 +422,90 @@ S =
 \end{figure}
 
 \subsection{Nová funkcionalita}
+Nako¾ko MRHS solver je konzolová aplikácia, ktorej úèelom je vypoèíta sústavu rovníc s viacerımi pravımi stranami, tak celı beh programu je nastavenı pri spustení programu pomocou prepínaèov. Do programu boli pridané nasledovné prepínaèe: 
 
-%TODO
+\begin{itemize}
+	\item -t  = poèet sekúnd, po ktorıch sa má program vypnú a vráti exit kód UNKNOWN (0)
+	\item -i = s hodnotou 1 zapne optimalizáciu vstupnej k-SAT formule (algoritmus \ref{alg: heuristic-sat}), defaultne je zadaná hodnota nula (bez optimalizácie)
+	\item -a = typ solvera. Pre hodnotu 0 je algoritmus riešenia sústavy nastavenı na pôvodnı algoritmus riešenia (alg. \ref{alg: solver}). Pre hodnotu 2 je pouitı dual space solution algoritmus (alg. \ref{subsec: dualspacesolutionalgorithm}). Pre hodnotu 3 sa sústava vypoèíta oboma algoritmami.
+\end{itemize}
 
+Prepínaèe programu sú stavané na jednoduchú prácu so solverom poèas experimentov. O metodike experimentov viac v kapitole \ref{subsec: metodikaEXP}
 \section{Experimentálna èas}
-%TODO
-\subsection{Metodika experimentov}
-%TODO
+Naším cie¾om bolo systematicky porovna dobu riešenia náhodne generovanej sústavy k-SAT klauzule s dobou riešenia tejto sústavy po úprave algoritmom \ref{alg: heuristic-sat}. Na riešenie sústav sme pouili MRHS solver s algoritmami na riešenie sústavy \ref{alg: solver} a dual space solution z kapitoly \ref{subsec: dualspacesolutionalgorithm}. Na generovanie k-SAT formúl sme vyuili program Cnfgen \cite{cnfgen}. 
+
+\subsection{Testovacia platforma}
+Všetky vıpoèty boli robené na jednom zariadení pre zaistenie èo najmenších odchılok. Parametre poèítaèa, na ktorom boli uskutoènené vıpoèty, sú:
+\begin{itemize}
+	\item Procesor: Intel core i5 - 8600K, 3.6GHz
+	\item RAM: 16GB
+\end{itemize} 
+ Vıpoèty prebiehali na jednom jadre procesora.
+ 
+ 
+ \subsection{Metodika experimentov}
+Skúmali sme náhodné k-Sat problémy. Pre tieto testy sme si zvolili \(k = {3, 4}\) a menili sme rôzne faktory a sledovali ako vplıvajú na vıstup. Sledovanou premennou bude èas [s], za ktorı dokáu algoritmy na riešenie sústav nájs všetky riešenia problému. Pre kadú sadu testov, sa vygenerovali problémy s následovnımi faktormi:
+
+\textbf{Fixnı pomer \(m/n\)}
+
+Tento pomer, sme volili rôzny pre jednotlivé \(k\) pod¾a štúdií \cite{Threshold}\cite{Threshold2}, tak aby sme boli v oblasti tzv. najaších problémov. 
+
+\textbf{Pevne dané \(n\) a premenlivé \(m\)}
+
+Pri tomto teste sme si nastavili spodnú hranicu tak, aby bola pravdepodobnos splnite¾nosti cca. 90\% a hornú hranicu sme nastavili tak, aby bola pravdepodobnos splnite¾nosti 0\% pod¾a vzahu \(m/n = 2^{k} \log 2 - \frac{\log 2}{2}\) (vzah prebratı z \cite{unsatisfiable}). 
+\\
+Následne sme na tieto problémy aplikovali naše algoritmy samostatne, ale aj v kombinácii. Aplikovali sa naslednovné algoritmy:
+
+\textbf{Experimenty s pôvodnım algoritmom riešenia sústavy}
+
+Vygenerované k-SAT problémy boli transformované na MRHS sústavu a následne riešené algoritmom \ref{alg: solver}.
+
+\textbf{Experimenty s dual space solution algoritmom}
+Vygenerované k-SAT problémy po transformácií na MRHS sústavu boli transformované na novú reprezentáciu problému spomenutú v kapitole \ref{subsec: mrhstodual} a následne riešenie pomocou algoritmu z kapitoly \ref{subsec: dualspacesolutionalgorithm}.
+
+\textbf{Experimenty s heuristickou optimalizáciou}
+Na vygenerované k-sat problémy, sme aplikovali nami implementovanú heuristickú optimalizáciu poradia klauzúl. Následne sme porovnávali èasy, potrebné na nájdenie všetkıch riešení s vyuitím pôvodného algoritmu riešenia sústavy a dual space solution algoritmom.
+
+
 \subsection{Vyhodnotenie experimentov}
-%TODO
+
+\subsubsection{3-SAT pevnı pomer \(m/n\)}
+V tomto experimente sme skúmali vplyv zvyšujúceho sa poètu premennıch \(n\) v 3-sat formule pri pomere  \(m/n = 4.2\). 
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{img/3satPevnyPomer.png}
+	\centering
+	\caption{Experiment 1: 3-SAT pevnı pomer \(m/n\)}
+	\label{exp: 3-sat-fixed}
+\end{figure}
+
+Z vyššie zobrazeného obrázku \ref{exp: 3-sat-fixed} mono vidie, e dual space solution algoritmus bez pre-optimalizácie exponenciálne rıchlejšie rastie v porovnaní s ostatnımi spôsobmi riešenia. Najlepší èas sme dosiahli v prípade pouitia pôvodného algoritmu a pre-optimalizácie 3-sat formule.
+
+\subsubsection{3-SAT premenlivı pomer}
+V tomto experimente sme skúmali vplyv zvyšujúceho sa pomeru \(m/n\) na dobu riešenia sústavy.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{img/3satPremenlivyPomer.png}
+\centering
+\caption{Experiment 2: 3-SAT premenlivı pomer}
+\label{exp: 3-sat-variable}
+\end{figure}
+
+\subsubsection{4-SAT pevnı pomer \(m/n\)}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{img/4satPevnyPomer.png}
+	\centering
+	\caption{Experiment 3: 4-SAT pevnı pomer \(m/n\)}
+	\label{exp: 4-sat-fixed}
+\end{figure}
+
+
+\subsubsection{4-SAT premenlivı pomer}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{img/4satPremenlivyPomer.png}
+	\centering
+	\caption{Experiment 4: 4-SAT premenlivı pomer}
+	\label{exp: 4-sat-variable}
+\end{figure}

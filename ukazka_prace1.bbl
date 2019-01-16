@@ -1,4 +1,17 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Threshold}
+{\sc Chertkov, E.}
+\newblock Phase transitions in random satisfiability problems.
+\newblock
+  \url{http://guava.physics.uiuc.edu/~nigel/courses/563/Essays_2017/PDF/chertkov.pdf},
+  2017.
+
+\bibitem{unsatisfiable}
+{\sc Coja-Oghlan, A.}
+\newblock Chasing the k-sat threshold.
+\newblock
+  \url{https://www.math.uni-frankfurt.de/~acoghlan/talk_AtlantaSAT.pdf}, 2017.
 
 \bibitem{cook}
 {\sc Cook, S.~A.}
@@ -27,10 +40,20 @@
 \newblock {\em Aplikácia MRHS rovníc na riešenie SAT problému}.
 \newblock 2018.
 
+\bibitem{cnfgen}
+{\sc Lauria, M.}
+\newblock Cnfgen.
+\newblock \url{https://github.com/MassimoLauria/cnfgen}.
+
 \bibitem{mrhslingebra}
 {\sc Raddum, H., and Zajac, P.}
 \newblock Mrhs solver based on linear algebra and exhaustive search.
 \newblock https://eprint.iacr.org/2018/111.pdf.
+
+\bibitem{Threshold2}
+{\sc Stephan~Mertens, Marck~Mézard, R.~Z.}
+\newblock Threshold values of random k-sat from the cavity method.
+\newblock \url{https://arxiv.org/pdf/cs/0309020.pdf}, 2017.
 
 \bibitem{bip}
 {\sc Wikipedia}.
