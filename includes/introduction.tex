@@ -1,1 +1,34 @@
 % !TeX encoding = windows-1250
+
+\subsection{Tím}
+Náš tím sa skladá z 3 èlenov. Ide o troch programátorov, ktorí študujú na FEI STU odbor aplikovaná informatika. Všetci traja sme v minulosti spolupracovali na našich bakalárskych prácach s prof. Zajacom (zadávate¾ tímového projektu) na témach úzko súvisiacich s témou tímového projektu. Jednotlivı èlenovia tímu:
+
+\textbf{Alena Bednáriková} - programátorka. Témou jej bakalárskej práce bolo riešenie MQ problému. Jej hlavnım prínosom pre tím je jej logické uvaovanie.
+
+\textbf{Daniel Jahodka} - programátor. Obsahom jeho bakalárskej práce boli sústavy MRHS rovníc a ich úprava pomocou heuristickıch algoritmov. Jeho hlavnım prínosom pre tím je riešenie problémov a návrh ich riešeni, prevane tıch programátorskıch.
+
+\textbf{Fikrim Kabashi} - programátor so zameraním na C, C++ jazyky. Obsahom jeho bakalárskej práce bol práve SAT problém a MRHS rovnice. Implementoval algoritmus na heuristickú optimalizáciu poradia jednotlivıch klauzúl v SAT formule. Práve tento algoritmus je jeden z tıch, ktoré budeme implementova do MRHS solvera. 
+
+\subsection{Motivácia}
+Hlavnou motiváciou, preèo chceme rieši práve tento tímovı projekt je fakt, e obsah tohoto tímového projektu priamo nadväzuje na naše bakalárske práce a máme s danou témou a problematikou u nejaké skúsenosti. V našom prípade nebudeme musie sa venova úplnım základom oh¾adom tém MRHS sústav a SAT problému, ale budeme môc sa hneï venova novej problematike a prípadej implementácií novıch algoritmov, èi u na riešenie MRHS sústav/SAT problému alebo ich úprav. 
+
+\subsection{Hrubı návrh a plán projektu}
+Nako¾ko ide o vedecky zameranı projekt, tak hlavnım plánom projektu je implementova resp. doimplementova nové algoritmy do MRHS solveru a následne vyhodnoti dobu riešenie MRHS sústavy. Medzi plánované veci, ktoré sa budú implementova do solvera sú:
+
+\begin{itemize}
+	\item transformácia SAT do MRHS
+	\item heuristická optimalizácia poradia SAT klauzúl
+	\item SAT challenge formality
+	\item Dual solver
+\end{itemize}
+
+\subsection{Predpokladané zdroje}
+Najhlavnejším zdrojom, ktorı budeme potrebova pre urıchlenie vıpoètov je prístup k školskému klastru \url{https://www.hpc.stuba.sk}. Vïaka klastru, by sme dokázali paralelne spúša vıpoèty a úrıchli tak získanie vısledkov a ich následné vyhodnotie.
+
+\subsection{Rozvrh}
+Všetci traja èlenovia máme rovnakı rozvrh. So zadávate¾om tímového projektu máme konzultaènú hodinu dohodnutú na kadu stredu semestra o 14 hodine.
+
+\subsection{Ciele riešenia}
+Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešenie sústav s viacerımi pravımi stranami. Ide o program napísanı v jazyku C. Algoritmus riešenia sústavy je popísanı v kapitole o algoritmoch. Cie¾om projektu je rozšíri tento program o novı algoritmus riešenia sústav tzv. Dual solver, o heuristickú optimalizáciu poradia klauzúl CNF formuli, o prevod CNF formuli do MRHS sústavy a o funkcionalitu v podobe špecifickıch vıstupov a exit kódov programu, ktoré vyaduje SAT challenge pre zúèastnenie. 
+
+Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT (3-CNF) formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl

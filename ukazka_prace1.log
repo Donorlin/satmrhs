@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  16 JAN 2019 18:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.7)  19 JAN 2019 19:01
 entering extended mode
 **./ukazka_prace1.tex
 (ukazka_prace1.tex
@@ -739,11 +739,11 @@ G,.JBIG2,.JB2,.eps]
 
 
 {C:/Users/mrave/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<img/zadanie.png, id=137, 1011.78pt x 429.605pt>
+<img/zadanie.png, id=133, 835.62187pt x 362.10281pt>
 File: img/zadanie.png Graphic file (type png)
 <use img/zadanie.png>
 Package pdftex.def Info: img/zadanie.png  used on input line 15.
-(pdftex.def)             Requested size: 597.50787pt x 253.70729pt.
+(pdftex.def)             Requested size: 597.50787pt x 258.9347pt.
  [2 <./img/zadanie.png>] (ukazka_prace1.toc
 LaTeX Font Info:    Try loading font information for OT1+txr on input line 3.
 
@@ -765,43 +765,45 @@ File: utxmia.fd 2000/12/15 v3.1
 LaTeX Font Info:    Try loading font information for U+txsyc on input line 3.
 (D:\MikTex\tex\latex\txfonts\utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
-) [3])
+))
 \tf@toc=\write6
 \openout6 = `ukazka_prace1.toc'.
 
- [4] (includes/core.tex
-\c@defn=\count154
-
-Overfull \hbox (2.87816pt too wide) in paragraph at lines 12--13
+ [3] [4] (includes/introduction.tex
+Overfull \hbox (2.87816pt too wide) in paragraph at lines 10--11
 []\T1/txr/bx/n/12 Fikrim Kabashi \T1/txr/m/n/12 - pro-gramá-tor so za-m-er-aním
  na C, C++ jazyky. Ob-sa-hom jeho bakalárskej
  []
 
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 21.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 19.
 (D:\MikTex\tex\latex\txfonts\omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <12> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 21.
-LaTeX Font Info:    Try loading font information for T1+txtt on input line 28.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 19.
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 26.
  (D:\MikTex\tex\latex\txfonts\t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 ) [1
 
 
-] [2] [3]
-Overfull \hbox (2.87917pt too wide) in paragraph at lines 39--40
+
+
+]) [2] (includes/core.tex
+\c@defn=\count154
+
+Overfull \hbox (2.87917pt too wide) in paragraph at lines 7--8
 \T1/txr/m/n/12 pra-co-va´. Pos-tupne si zadefin-u-jeme SAT prob-lém a sús-tavy 
 rovníc s vi-ac-erými pravými stranami
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--45
+Underfull \hbox (badness 10000) in paragraph at lines 10--13
 
  []
 
 
-Overfull \hbox (23.45015pt too wide) in paragraph at lines 42--45
+Overfull \hbox (23.45015pt too wide) in paragraph at lines 10--13
 \T1/txr/m/n/12 men-nými $\OT1/txr/m/n/12 (\OML/txmi/m/it/12 x[]; x[]; x[]; :::\
 OT1/txr/m/n/12 )$ \T1/txr/m/n/12 . Atom-ické výroky nadobú-dajú prav-di-vostné 
 hod-noty $\OML/txmi/m/it/12 x[] \OMS/txsy/m/n/12 2 f\OML/txmi/m/it/12 FALSE; TR
@@ -809,119 +811,109 @@ UE\OMS/txsy/m/n/12 g$\T1/txr/m/n/12 .
  []
 
 
-Overfull \hbox (1.21016pt too wide) in paragraph at lines 68--70
+Overfull \hbox (1.21016pt too wide) in paragraph at lines 36--38
 []\T1/txr/m/n/12 Klauzula, ktorá neob-sahuje ºi-adny literál, sa nazýva prázdna
- a vy-hod-nocuje sa ako $\OML/txmi/m/it/12 FALSE:$ 
+ a vy-hod-nocuje sa ako $\OML/txmi/m/it/12 FALSE:$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
-
- []
-
-[4]
-Overfull \hbox (22.9062pt too wide) in paragraph at lines 71--73
-[]\T1/txr/m/n/12 Nastavenie log-ick-ých pre-men-ných na ne-jaké hod-noty oz-na£
+Overfull \hbox (0.14392pt too wide) in paragraph at lines 36--38
+\T1/txr/m/n/12 Nas-tave-nie log-ick-ých pre-men-ných na ne-jaké hod-noty oz-na£
 íme po-j-mom in-ter-pretá-cia(formuly). 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--73
-
- []
-
-[5] [6]
+[3] [4] [5]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 105.
- [7] [8] [9]
+put line 70.
+ [6] [7] [8]
 Overfull \vbox (7.79333pt too high) has occurred while \output is active []
 
 
-[10]
-<img/bipartite.png, id=322, 653.44125pt x 635.37375pt>
+[9]
+<img/bipartite.png, id=311, 653.44125pt x 635.37375pt>
 File: img/bipartite.png Graphic file (type png)
 <use img/bipartite.png>
-Package pdftex.def Info: img/bipartite.png  used on input line 212.
+Package pdftex.def Info: img/bipartite.png  used on input line 177.
 (pdftex.def)             Requested size: 150.56305pt x 146.39465pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
+Underfull \hbox (badness 10000) in paragraph at lines 182--185
 
  []
 
 
-Overfull \hbox (2.9638pt too wide) in paragraph at lines 217--220
+Overfull \hbox (2.9638pt too wide) in paragraph at lines 182--185
 \T1/txr/m/n/12 Uvaºujme, ºe klauzuly sú v ne-jakom po-radí $\OML/txmi/m/it/12 P
 $\T1/txr/m/n/12 , £omu zod-povedajú £íslo-vané vr-choly $[]$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
-[11 <./img/bipartite.png>] [12] [13] [14] [15] [16] [17]
-
-LaTeX Warning: Reference `subsec: metodikaEXP' on page 18 undefined on input li
-ne 433.
-
-[18]
+[10 <./img/bipartite.png>] [11] [12] [13] [14] [15]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 434.
+(hyperref)                removing `\textasciicaron' on input line 327.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 434.
+(hyperref)                removing `\textasciicaron' on input line 327.
 
 
-Overfull \hbox (6.82788pt too wide) in paragraph at lines 466--468
+Overfull \hbox (6.82788pt too wide) in paragraph at lines 359--361
 \T1/txr/m/n/12 liko-vali nami im-ple-men-to-vanú heuri-stickú op-ti-mal-izá-ciu
  po-ra-dia klauzúl. Následne sme porovná-
  []
 
-[19]
-LaTeX Font Info:    Calculating math sizes for size <14> on input line 472.
+[16]
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 365.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 472.
+(hyperref)                removing `math shift' on input line 365.
 
-<img/3satPevnyPomer.png, id=436, 1003.75pt x 602.25pt>
+<img/3satPevnyPomer.png, id=414, 1003.75pt x 602.25pt>
 File: img/3satPevnyPomer.png Graphic file (type png)
 <use img/3satPevnyPomer.png>
-Package pdftex.def Info: img/3satPevnyPomer.png  used on input line 476.
+Package pdftex.def Info: img/3satPevnyPomer.png  used on input line 369.
 (pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
-<img/3satPremenlivyPomer.png, id=438, 1003.75pt x 602.25pt>
+<img/3satPremenlivyPomer.png, id=416, 1003.75pt x 602.25pt>
 File: img/3satPremenlivyPomer.png Graphic file (type png)
 <use img/3satPremenlivyPomer.png>
-Package pdftex.def Info: img/3satPremenlivyPomer.png  used on input line 488.
+Package pdftex.def Info: img/3satPremenlivyPomer.png  used on input line 381.
 (pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
-[20 <./img/3satPevnyPomer.png (PNG copy)>]
+[17 <./img/3satPevnyPomer.png (PNG copy)>]
+Overfull \hbox (6.06949pt too wide) in paragraph at lines 387--388
+[]\T1/txr/m/n/12 V prí-pade zvy²u-júceho sa pomeru $\OML/txmi/m/it/12 m=n$ \T1/
+txr/m/n/12 moºno zvy²²ie zo-brazeného grafu vi-die´, ºe pôvodný
+ []
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 494.
+(hyperref)                removing `math shift' on input line 389.
 
-<img/4satPevnyPomer.png, id=445, 1003.75pt x 602.25pt>
+<img/4satPevnyPomer.png, id=423, 752.8125pt x 474.27188pt>
 File: img/4satPevnyPomer.png Graphic file (type png)
 <use img/4satPevnyPomer.png>
-Package pdftex.def Info: img/4satPevnyPomer.png  used on input line 497.
-(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
-[21 <./img/3satPremenlivyPomer.png (PNG copy)>]
-<img/4satPremenlivyPomer.png, id=453, 1003.75pt x 602.25pt>
+Package pdftex.def Info: img/4satPevnyPomer.png  used on input line 392.
+(pdftex.def)             Requested size: 455.24411pt x 286.80873pt.
+[18 <./img/3satPremenlivyPomer.png (PNG copy)>]
+<img/4satPremenlivyPomer.png, id=430, 752.8125pt x 474.27188pt>
 File: img/4satPremenlivyPomer.png Graphic file (type png)
 <use img/4satPremenlivyPomer.png>
-Package pdftex.def Info: img/4satPremenlivyPomer.png  used on input line 507.
-(pdftex.def)             Requested size: 455.24411pt x 273.15117pt.
-) [22 <./img/4satPevnyPomer.png (PNG copy)>] [23 <./img/4satPremenlivyPomer.png
- (PNG copy)>] (ukazka_prace1.bbl
+Package pdftex.def Info: img/4satPremenlivyPomer.png  used on input line 402.
+(pdftex.def)             Requested size: 455.24411pt x 286.80873pt.
+ [19 <./img/4satPevnyPomer.png>]) [20 <./img/4satPremenlivyPomer.png>] (ukazka_
+prace1.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--9
 \T1/txtt/m/n/12 physics . uiuc . edu / ~nigel / courses / 563 / Essays _ 2017 /
  PDF / chertkov . pdf$[][]\T1/txr/m/n/12 ,
  []
 
-) [24
+) [21
 
 
 ]
@@ -931,18 +923,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
 Package rerunfilecheck Info: File `ukazka_prace1.out' has not changed.
-(rerunfilecheck)             Checksum: 2C32D7928F1D968DFCF1269A7FF0054D;2296.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 17C5553F48E3359901B0EA5BF8FDC7C5;2221.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 12374 strings out of 492970
- 171098 string characters out of 3143823
- 318811 words of memory out of 3000000
- 15789 multiletter control sequences out of 15000+200000
+ 12370 strings out of 492970
+ 171134 string characters out of 3143823
+ 318805 words of memory out of 3000000
+ 15788 multiletter control sequences out of 15000+200000
  69559 words of font info for 122 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,10n,37p,783b,781s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -953,9 +941,9 @@ ikTex/fonts/type1/public/txfonts/txex.pfb><D:/MikTex/fonts/type1/public/txfonts
 /txsy.pfb><D:/MikTex/fonts/type1/public/txfonts/txsyb.pfb><D:/MikTex/fonts/type
 1/urw/times/utmb8a.pfb><D:/MikTex/fonts/type1/urw/times/utmr8a.pfb><D:/MikTex/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on ukazka_prace1.pdf (28 pages, 596145 bytes).
+Output written on ukazka_prace1.pdf (25 pages, 500366 bytes).
 PDF statistics:
- 555 PDF objects out of 1000 (max. 8388607)
- 185 named destinations out of 1000 (max. 500000)
- 287 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 533 PDF objects out of 1000 (max. 8388607)
+ 179 named destinations out of 1000 (max. 500000)
+ 279 words of extra memory for PDF output out of 10000 (max. 10000000)
 

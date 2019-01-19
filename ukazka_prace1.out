@@ -1,10 +1,10 @@
-\BOOKMARK [1][]{section.1}{Ponuka}{}% 1
-\BOOKMARK [2][]{subsection.2}{T\355m}{section.1}% 2
-\BOOKMARK [2][]{subsection.3}{Motiv\341cia}{section.1}% 3
-\BOOKMARK [2][]{subsection.4}{Hrub\375 n\341vrh a pl\341n projektu}{section.1}% 4
-\BOOKMARK [2][]{subsection.5}{Predpokladan\351 zdroje}{section.1}% 5
-\BOOKMARK [2][]{subsection.6}{Rozvrh}{section.1}% 6
-\BOOKMARK [1][]{section.7}{Ciele rie\235enia}{}% 7
+\BOOKMARK [1][]{section*.1}{Ponuka}{}% 1
+\BOOKMARK [2][]{subsection.2}{T\355m}{section*.1}% 2
+\BOOKMARK [2][]{subsection.3}{Motiv\341cia}{section*.1}% 3
+\BOOKMARK [2][]{subsection.4}{Hrub\375 n\341vrh a pl\341n projektu}{section*.1}% 4
+\BOOKMARK [2][]{subsection.5}{Predpokladan\351 zdroje}{section*.1}% 5
+\BOOKMARK [2][]{subsection.6}{Rozvrh}{section*.1}% 6
+\BOOKMARK [2][]{subsection.7}{Ciele rie\235enia}{section*.1}% 7
 \BOOKMARK [1][]{section.8}{Teoretick\351 z\341klady}{}% 8
 \BOOKMARK [2][]{subsection.9}{SAT}{section.8}% 9
 \BOOKMARK [2][]{subsection.17}{MRHS rovnice a s\372stavy}{section.8}% 10
@@ -19,14 +19,13 @@
 \BOOKMARK [3][]{subsubsection.116}{DIMACS input form\341t}{subsection.115}% 19
 \BOOKMARK [3][]{subsubsection.119}{Output form\341t}{subsection.115}% 20
 \BOOKMARK [2][]{subsection.122}{MRHS solver}{section.114}% 21
-\BOOKMARK [3][]{subsubsection.123}{Vstupn\375 form\341t pre MRHS solver}{subsection.122}% 22
-\BOOKMARK [2][]{subsection.126}{Nov\341 funkcionalita}{section.114}% 23
-\BOOKMARK [1][]{section.127}{Experiment\341lna cast}{}% 24
-\BOOKMARK [2][]{subsection.128}{Testovacia platforma}{section.127}% 25
-\BOOKMARK [2][]{subsection.129}{Metodika experimentov}{section.127}% 26
-\BOOKMARK [2][]{subsection.130}{Vyhodnotenie experimentov}{section.127}% 27
-\BOOKMARK [3][]{subsubsection.131}{3-SAT pevn\375 pomer m/n}{subsection.130}% 28
-\BOOKMARK [3][]{subsubsection.134}{3-SAT premenliv\375 pomer}{subsection.130}% 29
-\BOOKMARK [3][]{subsubsection.137}{4-SAT pevn\375 pomer m/n}{subsection.130}% 30
-\BOOKMARK [3][]{subsubsection.140}{4-SAT premenliv\375 pomer}{subsection.130}% 31
-\BOOKMARK [1][]{section*.143}{Zoznam pou\236itej literat\372ry}{}% 32
+\BOOKMARK [2][]{subsection.123}{Nov\341 funkcionalita}{section.114}% 22
+\BOOKMARK [1][]{section.124}{Experiment\341lna cast}{}% 23
+\BOOKMARK [2][]{subsection.125}{Testovacia platforma}{section.124}% 24
+\BOOKMARK [2][]{subsection.126}{Metodika experimentov}{section.124}% 25
+\BOOKMARK [2][]{subsection.127}{Vyhodnotenie experimentov}{section.124}% 26
+\BOOKMARK [3][]{subsubsection.128}{3-SAT pevn\375 pomer m/n}{subsection.127}% 27
+\BOOKMARK [3][]{subsubsection.131}{3-SAT premenliv\375 pomer}{subsection.127}% 28
+\BOOKMARK [3][]{subsubsection.134}{4-SAT pevn\375 pomer m/n}{subsection.127}% 29
+\BOOKMARK [3][]{subsubsection.137}{4-SAT premenliv\375 pomer}{subsection.127}% 30
+\BOOKMARK [1][]{section*.140}{Zoznam pou\236itej literat\372ry}{}% 31

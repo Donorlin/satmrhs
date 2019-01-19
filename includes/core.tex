@@ -1,39 +1,7 @@
 % !TeX encoding = windows-1250
 \newtheorem{defn}{Definícia}[section]
 
-\section{Ponuka}
-\subsection{Tím}
-Náš tím sa skladá z 3 èlenov. Ide o troch programátorov, ktorí študujú na FEI STU odbor aplikovaná informatika. Všetci traja sme v minulosti spolupracovali na našich bakalárskych prácach s prof. Zajacom (zadávate¾ tímového projektu) na témach úzko súvisiacich s témou tímového projektu. Jednotlivı èlenovia tímu:
 
-\textbf{Alena Bednáriková} - programátorka. Témou jej bakalárskej práce bolo riešenie MQ problému. Jej hlavnım prínosom pre tím je jej logické uvaovanie.
-
-\textbf{Daniel Jahodka} - programátor. Obsahom jeho bakalárskej práce boli sústavy MRHS rovníc a ich úprava pomocou heuristickıch algoritmov. Jeho hlavnım prínosom pre tím je riešenie problémov a návrh ich riešeni, prevane tıch programátorskıch.
-
-\textbf{Fikrim Kabashi} - programátor so zameraním na C, C++ jazyky. Obsahom jeho bakalárskej práce bol práve SAT problém a MRHS rovnice. Implementoval algoritmus na heuristickú optimalizáciu poradia jednotlivıch klauzúl v SAT formule. Práve tento algoritmus je jeden z tıch, ktoré budeme implementova do MRHS solvera. 
-
-\subsection{Motivácia}
-Hlavnou motiváciou, preèo chceme rieši práve tento tímovı projekt je fakt, e obsah tohoto tímového projektu priamo nadväzuje na naše bakalárske práce a máme s danou témou a problematikou u nejaké skúsenosti. V našom prípade nebudeme musie sa venova úplnım základom oh¾adom tém MRHS sústav a SAT problému, ale budeme môc sa hneï venova novej problematike a prípadej implementácií novıch algoritmov, èi u na riešenie MRHS sústav/SAT problému alebo ich úprav. 
-
-\subsection{Hrubı návrh a plán projektu}
-Nako¾ko ide o vedecky zameranı projekt, tak hlavnım plánom projektu je implementova resp. doimplementova nové algoritmy do MRHS solveru a následne vyhodnoti dobu riešenie MRHS sústavy. Medzi plánované veci, ktoré sa budú implementova do solvera sú:
-
-\begin{itemize}
-	\item transformácia SAT do MRHS
-	\item heuristická optimalizácia poradia SAT klauzúl
-	\item SAT challenge formality
-	\item Dual solver
-\end{itemize}
-
-\subsection{Predpokladané zdroje}
-Najhlavnejším zdrojom, ktorı budeme potrebova pre urıchlenie vıpoètov je prístup k školskému klastru \url{https://www.hpc.stuba.sk}. Vïaka klastru, by sme dokázali paralelne spúša vıpoèty a úrıchli tak získanie vısledkov a ich následné vyhodnotie.
-
-\subsection{Rozvrh}
-Všetci traja èlenovia máme rovnakı rozvrh. So zadávate¾om tímového projektu máme konzultaènú hodinu dohodnutú na kadu stredu semestra o 14 hodine.
-
-\section{Ciele riešenia}
-Vedúci tímového projektu prof. Pavol Zajac vyvinul softvér MRHS solver na riešenie sústav s viacerımi pravımi stranami. Ide o program napísanı v jazyku C. Algoritmus riešenia sústavy je popísanı v kapitole o algoritmoch. Cie¾om projektu je rozšíri tento program o novı algoritmus riešenia sústav tzv. Dual solver, o heuristickú optimalizáciu poradia klauzúl CNF formuli, o prevod CNF formuli do MRHS sústavy a o funkcionalitu v podobe špecifickıch vıstupov a exit kódov programu, ktoré vyaduje SAT challenge pre zúèastnenie. 
-
-Po implementovaní vyššie spomenutıch algoritmov bude našou úlohou pripravi experimenty na porovnanie dåky èasu riešenia sústavy za pouitia pôvodného algoritmu MRHS solveru a za pouitia Dual solver algoritmu. Vstupom algoritmov bude náhodne vygenerovaná 3-SAT (3-CNF) formula resp. 3-SAT formula upravená heuristickım algoritmom na optimalizáciu poradia klauzúl
 
 \section{Teoretické základy}
 V teoretickej èasti tejto práce si zadefinujeme jednotlivé pojmy, s ktorımi budeme ïalej pracova. Postupne si zadefinujeme SAT problém a sústavy rovníc s viacerımi pravımi stranami (MRHS).
@@ -66,10 +34,7 @@ Pre naše potreby, si zadefinujeme ešte jeden špecialny tvar formúl vırokovej log
 \end{defn}
 
 Klauzula, ktorá neobsahuje iadny literál, sa nazıva prázdna a vyhodnocuje sa ako \(FALSE.\)
-\newline
-
 Nastavenie logickıch premennıch na nejaké hodnoty oznaèíme pojmom interpretácia(formuly).
-\newline
 
 SAT je problém rozhodnutia, èi existuje interpretácia, ktorá spåòa danı booleovskı vıraz. Inımi slovami, pıtame sa, èi premenné daného booleovského vırazu, môu by nahradené hodnotami \(TRUE\) alebo \(FALSE\) takım spôsobom, e vıraz sa vyhodnotí ako \(TRUE.\) Ak je to tak, vıraz sa nazıva splnite¾nı. Na druhej strane, ak takéto priradenie neexistuje, vıraz je vyhodnotenı ako \(FALSE\) pre všetky moné priradenia premennıch, a vıraz je nesplnite¾nı. 
 
@@ -348,78 +313,6 @@ Jednım z naších cielov bolo implementova aby vstupom algoritmu bol súbor formát
 
 V prípade, e máme MRHS sústavu v takto pôvodnom tvare, je moné pomocou algoritmu \ref{alg: mrhsdtodualsolver} transformova sústavu do matice \(\mathbf{V}\), ktorú vie vypoèíta algoritmus Dual space solver spomenutı v kapitole \ref{subsec: dualspacesolutionalgorithm} a podrobnejšie spísanı v èlánku  \cite{dualspacesolver}.
 
-\subsubsection{Vstupnı formát pre MRHS solver}
-Pôvodnı vstupnı súbor obsahuje MRHS sústavu zapísanú v nasledovnom formáte: 
-\begin{itemize}
-	\item konfiguraènı riadok v tvare \(n\ m\ k_1\ l_1\ k_2\ l_2\ \cdots\ k_m\ l_m\), kde \(n\) je poèet premennıch, \(m\) poèet blokov sústavy, \(k_i\) je poèet ståpcov \(i\)-teho bloku, \(l_i\) je poèet pravıch strán \(i\)-teho bloku,
-	\item \(n\) riadkov zaèínajúcich a konèiacich hranatımi zátvorkami, obsahujúcich \(\sum_{i=1}^{m} k_i\) bitov,
-	\item \(\sum_{i=1}^{m} l_i\) riadkov zaèínajúcich a konèiacich hranatımi zátvorkami, obsahujúcich \(k_i\) bitov.
-\end{itemize}
-
-Na nišie zobrazenom obrázku è. \ref{fig: inputMRHSexample} je ukázanı príklad vstupného súboru pre MRHS solver. Sústava obsahuje 3 premenné, 2 rovnice, kde prvá rovnica obsahuje 7 pravıch strán a 3 ståpce a druhá rovnica obsahuje 2 pravé strany a 2 ståpce.
-
-V algebraickom zápise, MRHS sústava z obrázka è. \ref{fig: inputMRHSexample} vyzerá následovne: 
-
-MATICA
-\[
-\mathbf{M} = 
-\left[
-\begin{array}{ccc|ccc}
-1 & 0 & 0 & 1 & 0  \\
-0 & 1 & 0 & 0 & 1  \\
-0 & 0 & 1 & 0 & 0  
-\end{array}
-\right]
-\]
-
-
-PRAVÉ STRANY
-\[
-S = 
-\left\{
-\begin{array}{ccc}
-(0, 0, 1);\\
-(0, 1, 0);\\
-(0, 1, 1);\\
-(1, 0, 1);\\
-(1, 1, 0);\\
-(1, 0, 0);\\
-(1, 1, 1);
-\end{array}
-\right\}
-\times
-\left\{
-\begin{array}{cc}
-(0, 0);\\
-(0, 1);\\
-(1, 0);
-\end{array}
-\right\}
-\]
-
-\begin{figure}[H]
-	\centering
-	\begin{BVerbatim}
-	3 2 3 7 2 3
-	[100 10]
-	[010 01]
-	[001 00]
-	
-	[001]
-	[010]
-	[011]
-	[101]
-	[110]
-	[100]
-	[111]
-	
-	[00]
-	[01]
-	[10]
-	\end{BVerbatim}
-	\caption{Príklad MRHS vstupného súboru.}
-	\label{fig: inputMRHSexample}
-\end{figure}
 
 \subsection{Nová funkcionalita}
 Nako¾ko MRHS solver je konzolová aplikácia, ktorej úèelom je vypoèíta sústavu rovníc s viacerımi pravımi stranami, tak celı beh programu je nastavenı pri spustení programu pomocou prepínaèov. Do programu boli pridané nasledovné prepínaèe: 
@@ -430,7 +323,7 @@ Nako¾ko MRHS solver je konzolová aplikácia, ktorej úèelom je vypoèíta sústavu r
 	\item -a = typ solvera. Pre hodnotu 0 je algoritmus riešenia sústavy nastavenı na pôvodnı algoritmus riešenia (alg. \ref{alg: solver}). Pre hodnotu 2 je pouitı dual space solution algoritmus (alg. \ref{subsec: dualspacesolutionalgorithm}). Pre hodnotu 3 sa sústava vypoèíta oboma algoritmami.
 \end{itemize}
 
-Prepínaèe programu sú stavané na jednoduchú prácu so solverom poèas experimentov. O metodike experimentov viac v kapitole \ref{subsec: metodikaEXP}
+Prepínaèe programu sú stavané na jednoduchú prácu so solverom poèas experimentov. 
 \section{Experimentálna èas}
 Naším cie¾om bolo systematicky porovna dobu riešenia náhodne generovanej sústavy k-SAT klauzule s dobou riešenia tejto sústavy po úprave algoritmom \ref{alg: heuristic-sat}. Na riešenie sústav sme pouili MRHS solver s algoritmami na riešenie sústavy \ref{alg: solver} a dual space solution z kapitoly \ref{subsec: dualspacesolutionalgorithm}. Na generovanie k-SAT formúl sme vyuili program Cnfgen \cite{cnfgen}. 
 
@@ -443,7 +336,7 @@ Všetky vıpoèty boli robené na jednom zariadení pre zaistenie èo najmenších odchı
  Vıpoèty prebiehali na jednom jadre procesora.
  
  
- \subsection{Metodika experimentov}
+ \subsection{Metodika experimentov}\label{subsec: metodikaEXP}
 Skúmali sme náhodné k-Sat problémy. Pre tieto testy sme si zvolili \(k = {3, 4}\) a menili sme rôzne faktory a sledovali ako vplıvajú na vıstup. Sledovanou premennou bude èas [s], za ktorı dokáu algoritmy na riešenie sústav nájs všetky riešenia problému. Pre kadú sadu testov, sa vygenerovali problémy s následovnımi faktormi:
 
 \textbf{Fixnı pomer \(m/n\)}
@@ -468,7 +361,7 @@ Na vygenerované k-sat problémy, sme aplikovali nami implementovanú heuristickú o
 
 
 \subsection{Vyhodnotenie experimentov}
-
+Všetky grafy v tejto kapitole sú zobrazené v logarimickej mierke na y-osi.
 \subsubsection{3-SAT pevnı pomer \(m/n\)}
 V tomto experimente sme skúmali vplyv zvyšujúceho sa poètu premennıch \(n\) v 3-sat formule pri pomere  \(m/n = 4.2\). 
 
@@ -491,8 +384,10 @@ V tomto experimente sme skúmali vplyv zvyšujúceho sa pomeru \(m/n\) na dobu rieš
 \label{exp: 3-sat-variable}
 \end{figure}
 
-\subsubsection{4-SAT pevnı pomer \(m/n\)}
+V prípade zvyšujúceho sa pomeru \(m/n\) mono zvyššie zobrazeného grafu vidie, e pôvodnı algoritmus riešenia s heuristickou optimalizáciou klauzúl sa od pomeru 2 zaèal zlepšova. Ostatné algoritmy exponenciálne rástli so zvyšujúcim sa pomerom.
 
+\subsubsection{4-SAT pevnı pomer \(m/n\)}
+V tomto experimente sme skúmali vplyv zvyšujúceho sa poètu premennıch \(n\) v 4-sat formule pri pomere  \(m/n = 9.7\). 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{img/4satPevnyPomer.png}
 	\centering
@@ -500,12 +395,16 @@ V tomto experimente sme skúmali vplyv zvyšujúceho sa pomeru \(m/n\) na dobu rieš
 	\label{exp: 4-sat-fixed}
 \end{figure}
 
-
+Z obrázka mono jasne vidie prevahu v èase riešenia medzi pôvodnım algoritom riešenia sústavy bez pouitia optimalizácie a s pouitím optimalizácie. V prípade pouitia optimalizácie je zrıchlenie nájdenia riešenia nieko¾ko násobné. Z tohoto experimentu sa dá utvrdi predpoklad, e dual space solution algoritmus je závislı od lineárnej algebry a nie od poradia rovníc sústavy. Z grafu mono vidie, e rozdie¾ medzi optimalizovanou sústavou a sústavou bez optimalizácie je nepatrnı. 
 \subsubsection{4-SAT premenlivı pomer}
-
+V tomto experimente sme skúmali vplyv zvyšujúceho sa pomeru \(m/n\) na dobu riešenia sústavy.
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{img/4satPremenlivyPomer.png}
 	\centering
 	\caption{Experiment 4: 4-SAT premenlivı pomer}
 	\label{exp: 4-sat-variable}
 \end{figure}
+
+Z grafu mono vidie, e doba riešenia sústavy za pouitia pôvodného algoritmu riešenia sústavy spolu s optimalizáciou sa v prípade, zvyšujúceho pomeru zlepšuje. V prípade nepouitia optimalizácie sa zdá by doba riešenia sústavy s pôvodnım algoritmom riešenia konštantná. 
+
+Heuristická optimalizácia dokáe nieko¾ko násobne zlepši dobu riešenia sústavy v prípade pouitia dual space solution algoritmu, ale v porovnaní s pôvodnım algoritmom je stále priestor na zlepšenie.
